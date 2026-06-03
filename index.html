@@ -770,6 +770,33 @@ footer p { color: #dff9f4; }
 .hide-before-login{
   display:none !important;
 }
+
+/* Bigger, easier-to-tap nav buttons */
+nav button {
+  min-height: 44px;
+  padding: 10px 16px;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Bigger action buttons globally */
+.btn {
+  min-height: 48px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Logout button in nav */
+nav button[onclick="logoutUser()"] {
+  background: #e9565f;
+  color: white;
+  border: none;
+  min-height: 44px;
+}
   </style>
   
 </head>
@@ -1321,6 +1348,7 @@ Logout
   function weakSkillKeys() { return getGaps().filter(g => g.gap >= 20).map(g => g.key); }
 
 
+  function showPage(id) {
     const section = byId(id);
     if (!section) return;
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
@@ -1364,8 +1392,6 @@ function registerUser(){
   alert('สร้างบัญชีสำเร็จ');
 }
 
-  showPage(id);
-}
 function loginUser(){
 
   const email =
@@ -1393,20 +1419,20 @@ function loginUser(){
     'true'
   );
 
+  document.getElementById('mainMenu').classList.remove('hide-before-login');
   showPage('home');
+} else {
+  alert('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
+}
 }
 
 function logoutUser(){
-
+  if(!confirm('ต้องการออกจากระบบ?')) return;
   localStorage.removeItem('isLoggedIn');
-
-  document
-    .getElementById('mainMenu')
-    .classList.add('hide-before-login');
-
-  alert('ออกจากระบบแล้ว');
-
-  location.reload();
+  document.getElementById('mainMenu').classList.add('hide-before-login');
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById('login').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
   
@@ -1521,28 +1547,32 @@ function logoutUser(){
 
   function registerUser(){
 
+  const name = byId('regName').value.trim();
+  const email = byId('regEmail').value.trim();
+  const password = byId('regPassword').value.trim();
+
+  if(!name || !email || !password){
+    alert('กรุณากรอกชื่อ, อีเมล และรหัสผ่านให้ครบ');
+    return;
+  }
+
   const user = {
-    name: byId('regName').value,
-    email: byId('regEmail').value,
-    password: byId('regPassword').value,
+    name,
+    email,
+    password,
     career: byId('targetCareer').value
   };
 
-  localStorage.setItem(
-    'futureReadyUser',
-    JSON.stringify(user)
-  );
+  localStorage.setItem('futureReadyUser', JSON.stringify(user));
+  localStorage.setItem('isLoggedIn', 'true');
 
   loadUserInfo();
 
-  document
-    .getElementById('mainMenu')
-    .classList.remove('hide-before-login');
+  document.getElementById('mainMenu').classList.remove('hide-before-login');
 
-  byId('loginStatus').textContent =
-    'บันทึกบัญชีเรียบร้อย : ' + user.name;
+  byId('loginStatus').textContent = 'บันทึกบัญชีเรียบร้อย : ' + user.name;
 
-  alert('สมัคร / Login สำเร็จ');
+  alert('สมัครสมาชิกสำเร็จ! ยินดีต้อนรับ ' + name);
 
   go('home');
 }
@@ -1835,31 +1865,16 @@ document.addEventListener("click", function(e){
   }
 
 });
- window.onload = function(){
-
-  loadUserInfo();
-
-  const isLoggedIn =
-    localStorage.getItem('isLoggedIn');
-
+window.addEventListener('DOMContentLoaded', function(){
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
   if(isLoggedIn === 'true'){
-
-    document
-      .getElementById('mainMenu')
-      .classList.remove('hide-before-login');
-
+    document.getElementById('mainMenu').classList.remove('hide-before-login');
+    loadUserInfo();
     showPage('home');
-
-  }else{
-
+  } else {
     showPage('login');
-
   }
-
-};
-
-
-
+});
 </script>
 
 </body>
