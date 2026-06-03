@@ -1158,83 +1158,261 @@ Logout
   'use strict';
 
   const skills = [
+    
     { key: 'ai', group: 'AI Skills', label: 'AI Tools', market: 90, q: 'คุณสามารถใช้ AI Tools ในระดับใด' },
     { key: 'prompt', group: 'AI Skills', label: 'Prompt Engineering', market: 88, q: 'คุณเขียน Prompt เพื่อช่วยวิเคราะห์หรือสร้างงานได้แค่ไหน' },
     { key: 'data', group: 'Digital Skills', label: 'Data Skills', market: 82, q: 'คุณวิเคราะห์ข้อมูลหรือทำ Dashboard ได้หรือไม่' },
     { key: 'sql', group: 'Digital Skills', label: 'SQL', market: 75, q: 'คุณใช้ SQL หรือจัดการข้อมูลได้ระดับใด' },
     { key: 'human', group: 'Human Skills', label: 'Communication', market: 85, q: 'คุณสื่อสาร ทำงานเป็นทีม และแก้ปัญหาได้ดีแค่ไหน' },
     { key: 'career', group: 'Career Skills', label: 'Portfolio', market: 78, q: 'คุณมี Portfolio หรือผลงานที่ใช้สมัครงานได้หรือไม่' }
-  ];
+  ];const careerQuestionBank = {
+  "Data Analyst": [
+    { key:"da_q1", group:"Data Analyst", label:"Data Cleaning", market:88, q:"ข้อมูลยอดขายมีค่าว่างและข้อมูลซ้ำ ควรทำอย่างไร?", options:[
+      { text:"นำไปทำกราฟทันที", score:25, lack:"Data Cleaning", improve:"Data Preparation", reason:"เพราะข้อมูลสกปรกทำให้ผลวิเคราะห์ผิดพลาด" },
+      { text:"ตรวจ Missing Value, Duplicate และทำความสะอาดข้อมูลก่อน", score:90, strength:"Data Quality Control", reason:"เพราะงานวิเคราะห์ที่ดีต้องเริ่มจากข้อมูลที่ถูกต้อง" },
+      { text:"ลบข้อมูลทั้งหมดแล้วเริ่มใหม่", score:20, lack:"Problem Solving", improve:"Data Handling", reason:"เพราะควรแก้ปัญหาเป็นระบบ ไม่ลบข้อมูลทิ้งทันที" },
+      { text:"เดาสุ่มค่าแทนข้อมูลที่หาย", score:30, lack:"Data Ethics", improve:"Data Validation", reason:"เพราะการเดาข้อมูลทำให้ Insight ไม่น่าเชื่อถือ" }
+    ]},
+    { key:"da_q2", group:"Data Analyst", label:"SQL Analysis", market:86, q:"หัวหน้าขอรายงานยอดขายแยกตามจังหวัดจากฐานข้อมูล คุณควรทำอย่างไร?", options:[
+      { text:"คัดลอกข้อมูลทุกแถวไปทำเองใน Excel", score:35, lack:"Query Efficiency", improve:"SQL Aggregation", reason:"เพราะข้อมูลจำนวนมากควรสรุปด้วย Query" },
+      { text:"ใช้ SELECT, GROUP BY และ SUM เพื่อสรุปยอดขาย", score:90, strength:"SQL Aggregation", reason:"เพราะเป็นวิธีตรงกับงาน Data Analyst จริง" },
+      { text:"ขอให้คนอื่นทำแทน", score:20, lack:"Independence", improve:"SQL Practice", reason:"เพราะควรฝึกใช้เครื่องมือพื้นฐานของสายงาน" },
+      { text:"ดูแค่จังหวัดแรกแล้วสรุปทั้งหมด", score:15, lack:"Analytical Accuracy", improve:"Data Completeness", reason:"เพราะการสรุปจากข้อมูลไม่ครบทำให้ตัดสินใจผิด" }
+    ]},
+    { key:"da_q3", group:"Data Analyst", label:"Dashboard Insight", market:84, q:"Dashboard มีกราฟเยอะ แต่ผู้บริหารไม่เข้าใจ Insight ควรปรับอย่างไร?", options:[
+      { text:"เพิ่มกราฟให้เยอะขึ้น", score:25, lack:"Data Storytelling", improve:"Executive Dashboard Design", reason:"เพราะจำนวนกราฟมากไม่ได้แปลว่าสื่อสารดี" },
+      { text:"เลือก KPI สำคัญ สรุป Insight และ Action ชัดเจน", score:92, strength:"Business Insight Communication", reason:"เพราะผู้บริหารต้องการข้อมูลเพื่อการตัดสินใจ" },
+      { text:"ใส่สีสดทุกกราฟให้ดูน่าสนใจ", score:35, lack:"Visual Hierarchy", improve:"Dashboard UX", reason:"เพราะสีช่วยได้แต่ไม่แทนการวิเคราะห์" },
+      { text:"ส่งไฟล์ดิบให้ผู้บริหารดูเอง", score:15, lack:"Communication", improve:"Data Storytelling", reason:"เพราะหน้าที่ Analyst คือแปลงข้อมูลเป็นความหมาย" }
+    ]},
+    { key:"da_q4", group:"Data Analyst", label:"Business Question", market:82, q:"ยอดขายลดลง 20% คุณควรเริ่มวิเคราะห์จากอะไร?", options:[
+      { text:"สรุปทันทีว่าเพราะเศรษฐกิจไม่ดี", score:25, lack:"Root Cause Analysis", improve:"Hypothesis Testing", reason:"เพราะยังไม่มีหลักฐานรองรับ" },
+      { text:"แยกดูตามเวลา สินค้า ช่องทาง และกลุ่มลูกค้า", score:90, strength:"Root Cause Analysis", reason:"เพราะช่วยหาสาเหตุที่แท้จริงจากหลายมิติ" },
+      { text:"ลบข้อมูลเดือนที่ยอดขายตกออก", score:10, lack:"Data Ethics", improve:"Analytical Integrity", reason:"เพราะเป็นการบิดเบือนข้อมูล" },
+      { text:"ดูกราฟเส้นอย่างเดียว", score:40, lack:"Multi-dimensional Analysis", improve:"Segmentation", reason:"เพราะต้องเจาะลึกมากกว่าดูแนวโน้มรวม" }
+    ]}
+  ],
+
+  "UX/UI Designer": [
+    { key:"ux_q1", group:"UX/UI Designer", label:"User Research", market:85, q:"ออกแบบแอปแล้วผู้ใช้บอกว่าใช้งานยาก ควรทำอย่างไร?", options:[
+      { text:"บอกว่าผู้ใช้ไม่เข้าใจเอง", score:20, lack:"User Empathy", improve:"UX Mindset", reason:"เพราะ UX ต้องเริ่มจากความเข้าใจผู้ใช้" },
+      { text:"สัมภาษณ์ผู้ใช้ ทดสอบ Usability แล้วปรับ Flow", score:90, strength:"User-Centered Design", reason:"เพราะใช้ข้อมูลผู้ใช้จริงมาปรับปรุงงาน" },
+      { text:"เปลี่ยนสีให้สวยขึ้นอย่างเดียว", score:35, lack:"UX Research", improve:"Usability Testing", reason:"เพราะปัญหาใช้งานยากไม่ได้แก้ด้วยสีอย่างเดียว" },
+      { text:"ลอกดีไซน์แอปดังมาใช้", score:25, lack:"Design Reasoning", improve:"UX Principles", reason:"เพราะบริบทผู้ใช้แต่ละระบบไม่เหมือนกัน" }
+    ]},
+    { key:"ux_q2", group:"UX/UI Designer", label:"Information Architecture", market:82, q:"เมนูในเว็บมีเยอะจนผู้ใช้หาหน้าไม่เจอ ควรทำอย่างไร?", options:[
+      { text:"เพิ่มเมนูเข้าไปอีกเพื่อให้ครบ", score:20, lack:"Information Architecture", improve:"Menu Prioritization", reason:"เพราะเมนูเยอะทำให้ Cognitive Load สูง" },
+      { text:"จัดกลุ่มเมนู ลดสิ่งไม่จำเป็น และทดสอบกับผู้ใช้", score:90, strength:"Navigation Design", reason:"เพราะช่วยให้ผู้ใช้ตัดสินใจง่ายขึ้น" },
+      { text:"ทำปุ่มทุกปุ่มให้สีเดียวกัน", score:35, lack:"Interaction Design", improve:"Visual Hierarchy", reason:"เพราะยังไม่ได้แก้โครงสร้างข้อมูล" },
+      { text:"ซ่อนเมนูทั้งหมดไว้", score:30, lack:"Accessibility", improve:"Discoverability", reason:"เพราะผู้ใช้อาจหาเมนูสำคัญไม่เจอ" }
+    ]},
+    { key:"ux_q3", group:"UX/UI Designer", label:"Prototype", market:84, q:"ก่อนส่งให้นักพัฒนาทำเว็บจริง ควรเตรียมอะไร?", options:[
+      { text:"ส่งรูปหน้าจออย่างเดียว", score:35, lack:"Handoff Skill", improve:"Design Specification", reason:"เพราะทีม Dev ต้องการรายละเอียด Interaction" },
+      { text:"ทำ Prototype, Design System และระบุ spacing/color/component", score:92, strength:"Design Handoff", reason:"เพราะช่วยให้พัฒนาได้ตรงตามแบบ" },
+      { text:"อธิบายปากเปล่า", score:25, lack:"Documentation", improve:"UX Documentation", reason:"เพราะอาจเกิดความเข้าใจไม่ตรงกัน" },
+      { text:"ให้ Dev เดาเอง", score:10, lack:"Team Collaboration", improve:"Handoff Communication", reason:"เพราะเสี่ยงทำงานผิดและเสียเวลาแก้" }
+    ]},
+    { key:"ux_q4", group:"UX/UI Designer", label:"Accessibility", market:80, q:"ปุ่มสีเขียวบนพื้นหลังฟ้าอ่านยาก ควรทำอย่างไร?", options:[
+      { text:"ปล่อยไว้เพราะดูสวย", score:25, lack:"Accessibility Awareness", improve:"Color Contrast", reason:"เพราะผู้ใช้บางกลุ่มอาจอ่านไม่ได้" },
+      { text:"ตรวจ Contrast และปรับสี/ขนาดตัวอักษรให้ชัด", score:90, strength:"Accessible UI Design", reason:"เพราะช่วยให้ผู้ใช้เข้าถึงได้มากขึ้น" },
+      { text:"ลดขนาดปุ่มให้เล็กลง", score:20, lack:"Usability", improve:"Tap Target Design", reason:"เพราะทำให้กดยากขึ้นโดยเฉพาะมือถือ" },
+      { text:"ใช้สีสุ่มทุกหน้า", score:15, lack:"Design Consistency", improve:"Design System", reason:"เพราะทำให้ประสบการณ์ใช้งานไม่ต่อเนื่อง" }
+    ]}
+  ],
+
+  "AI Content Creator": [
+    { key:"aic_q1", group:"AI Content Creator", label:"Quality Control", market:85, q:"เจนภาพด้วย AI แล้วนิ้วเกิน ลายผ้าเบี้ยว ควรทำอย่างไร?", options:[
+      { text:"โพสต์ทันที คิดว่าคนดูไม่สังเกต", score:25, lack:"Quality Control", improve:"Brand Image Management", reason:"เพราะคอนเทนต์ผิดพลาดทำให้แบรนด์เสียความน่าเชื่อถือ" },
+      { text:"ใช้ Inpainting หรือ Photoshop รีทัชก่อนโพสต์", score:90, strength:"Hybrid AI-Human Editing", reason:"เพราะใช้ AI ร่วมกับทักษะมนุษย์เพื่อควบคุมคุณภาพ" },
+      { text:"ด่า AI ให้มันสำนึกผิด", score:10, lack:"Tool Understanding", improve:"Generative AI Mechanics", reason:"เพราะต้องเข้าใจข้อจำกัดของเครื่องมือ" },
+      { text:"ลบรูปทิ้ง ไม่ใช้ภาพ AI อีก", score:35, lack:"Persistence", improve:"AI Image Retouching", reason:"เพราะควรฝึกแก้ไขแทนการเลี่ยงเครื่องมือ" }
+    ]},
+    { key:"aic_q2", group:"AI Content Creator", label:"Copyright & Ethics", market:90, q:"ให้ ChatGPT สรุปข่าวมาลงเพจ ควรคำนึงถึงอะไรที่สุด?", options:[
+      { text:"Copy ทั้งหมดมาโพสต์เลย", score:20, lack:"Ethical Standards", improve:"Copyright Law", reason:"เพราะเสี่ยงละเมิดลิขสิทธิ์และทำลายความน่าเชื่อถือ" },
+      { text:"Rewrite ตรวจความถูกต้อง และให้เครดิตแหล่งที่มา", score:95, strength:"Content Integrity & Ethics", reason:"เพราะเป็นการใช้ AI อย่างรับผิดชอบ" },
+      { text:"ใส่ข้อมูลเท็จเพิ่มเพื่อเรียกยอดไลก์", score:5, lack:"Responsible Journalism", improve:"Content Ethics", reason:"เพราะข้อมูลเท็จสร้างผลเสียต่อผู้อ่าน" },
+      { text:"ไม่ให้เครดิต เพราะ AI เขียนให้แล้ว", score:25, lack:"Fair Use Awareness", improve:"Digital Law", reason:"เพราะ AI ไม่ได้ทำให้สิทธิ์ของแหล่งข้อมูลหายไป" }
+    ]},
+    { key:"aic_q3", group:"AI Content Creator", label:"Content Strategy", market:85, q:"โพสต์รูป AI วันละ 10 รูป แต่ยอดแชร์ลดลง ควรทำอย่างไร?", options:[
+      { text:"เพิ่มเป็นวันละ 50 รูป", score:20, lack:"Content Strategy", improve:"Value-Driven Content", reason:"เพราะปริมาณมากไม่ได้แปลว่ามีคุณค่า" },
+      { text:"สร้างคอนเทนต์แก้ปัญหาให้คนอ่าน และชวนคุย", score:90, strength:"Community Engagement", reason:"เพราะ Engagement เกิดจากคุณค่าและการมีส่วนร่วม" },
+      { text:"ซื้อยอดไลก์ปลอม", score:10, lack:"Marketing Ethics", improve:"Digital Transparency", reason:"เพราะตัวเลขปลอมไม่สร้างผู้ติดตามจริง" },
+      { text:"ปิดเพจหนี", score:25, lack:"Resilience", improve:"Growth Mindset", reason:"เพราะควรทดลองและปรับกลยุทธ์" }
+    ]},
+    { key:"aic_q4", group:"AI Content Creator", label:"Short-form Content", market:82, q:"แพลตฟอร์มเน้นวิดีโอสั้น แต่คุณถนัดบทความยาว ควรทำอย่างไร?", options:[
+      { text:"ใช้ AI สรุปบทความเป็นสคริปต์คลิปสั้น", score:90, strength:"Content Repurposing", reason:"เพราะปรับเนื้อหาให้เข้ากับแพลตฟอร์มได้" },
+      { text:"เขียนยาวต่อไป แล้วโทษว่าวิดีโอสั้นไร้สาระ", score:25, lack:"Adaptability", improve:"Trend Forecasting", reason:"เพราะครีเอเตอร์ต้องปรับตัวตามพฤติกรรมผู้ชม" },
+      { text:"เอาบทความยาวไปอ่าน 30 นาทีลง TikTok", score:35, lack:"Platform Fit", improve:"Content Customization", reason:"เพราะรูปแบบไม่เหมาะกับพฤติกรรมผู้ชม" },
+      { text:"จ้างคนอื่นทำ ไม่เรียนรู้ AI", score:30, lack:"Technical Upskilling", improve:"AI Video Tools", reason:"เพราะควรเข้าใจเครื่องมือที่เกี่ยวกับงานของตน" }
+    ]}
+  ],
+
+  "Digital Marketing": [
+    { key:"dm_q1", group:"Digital Marketing", label:"Campaign Analytics", market:86, q:"ยิงแอดแล้วมีคนกดเยอะ แต่ไม่มีคนซื้อ ควรดูอะไร?", options:[
+      { text:"เพิ่มงบแอดทันที", score:25, lack:"Funnel Analysis", improve:"Conversion Optimization", reason:"เพราะ Click สูงไม่ได้แปลว่ายอดขายดี" },
+      { text:"วิเคราะห์ CTR, Landing Page, Conversion และกลุ่มเป้าหมาย", score:92, strength:"Performance Marketing Analysis", reason:"เพราะต้องหาคอขวดของ Funnel" },
+      { text:"เปลี่ยนสีปุ่มอย่างเดียว", score:35, lack:"Experiment Design", improve:"A/B Testing", reason:"เพราะควรทดสอบอย่างมีสมมติฐาน" },
+      { text:"ซื้อยอดไลก์เพิ่ม", score:10, lack:"Marketing Ethics", improve:"Organic Growth", reason:"เพราะยอดปลอมไม่เพิ่มรายได้จริง" }
+    ]},
+    { key:"dm_q2", group:"Digital Marketing", label:"SEO", market:82, q:"บทความติดอันดับต่ำใน Google ควรเริ่มปรับอย่างไร?", options:[
+      { text:"ใส่ Keyword ซ้ำ ๆ เยอะที่สุด", score:25, lack:"SEO Quality", improve:"Search Intent", reason:"เพราะ Keyword Stuffing ทำให้คุณภาพแย่" },
+      { text:"วิเคราะห์ Search Intent ปรับหัวข้อ โครงสร้าง และคุณภาพเนื้อหา", score:90, strength:"SEO Content Strategy", reason:"เพราะ SEO ต้องตอบคำถามผู้ค้นหา" },
+      { text:"คัดลอกบทความคู่แข่ง", score:10, lack:"Content Ethics", improve:"Original Content", reason:"เพราะเสี่ยงลิขสิทธิ์และไม่สร้างคุณค่า" },
+      { text:"ลบเว็บแล้วสร้างใหม่", score:20, lack:"Problem Solving", improve:"SEO Audit", reason:"เพราะควรตรวจปัญหาเดิมก่อน" }
+    ]},
+    { key:"dm_q3", group:"Digital Marketing", label:"Audience Targeting", market:84, q:"โฆษณาเข้าถึงคนเยอะ แต่ไม่ตรงกลุ่ม ควรทำอย่างไร?", options:[
+      { text:"ยิงให้กว้างขึ้นอีก", score:25, lack:"Audience Segmentation", improve:"Target Persona", reason:"เพราะยิ่งกว้างอาจยิ่งเสียเงินโดยไม่คุ้ม" },
+      { text:"สร้าง Persona และแบ่งกลุ่มเป้าหมายตามพฤติกรรม", score:90, strength:"Audience Segmentation", reason:"เพราะช่วยสื่อสารตรงความต้องการ" },
+      { text:"ใช้ข้อความเดียวกับทุกกลุ่ม", score:35, lack:"Personalization", improve:"Message Matching", reason:"เพราะแต่ละกลุ่มต้องการเหตุผลต่างกัน" },
+      { text:"หยุดทำการตลาดออนไลน์ทั้งหมด", score:20, lack:"Resilience", improve:"Campaign Optimization", reason:"เพราะควรปรับแคมเปญจากข้อมูล" }
+    ]},
+    { key:"dm_q4", group:"Digital Marketing", label:"Marketing Ethics", market:80, q:"ลูกค้าอยากให้ทำโฆษณาเกินจริงเพื่อยอดขาย ควรทำอย่างไร?", options:[
+      { text:"ทำทันทีเพราะลูกค้าจ่ายเงิน", score:15, lack:"Ethical Marketing", improve:"Truthful Advertising", reason:"เพราะโฆษณาเกินจริงทำลายความเชื่อมั่น" },
+      { text:"เสนอข้อความที่ขายได้แต่ไม่หลอกลวง", score:90, strength:"Responsible Marketing", reason:"เพราะรักษาทั้งยอดขายและความน่าเชื่อถือ" },
+      { text:"ใช้รีวิวปลอม", score:5, lack:"Trust Management", improve:"Marketing Ethics", reason:"เพราะผิดจริยธรรมและเสี่ยงกฎหมาย" },
+      { text:"ไม่สื่อสารกับลูกค้า", score:25, lack:"Client Communication", improve:"Professional Negotiation", reason:"เพราะควรอธิบายทางเลือกที่เหมาะสม" }
+    ]}
+  ],
+
+  "Prompt Engineer": [
+    { key:"pe_q1", group:"Prompt Engineer", label:"Prompt Clarity", market:88, q:"AI ตอบไม่ตรงโจทย์หลายครั้ง ควรแก้ Prompt อย่างไร?", options:[
+      { text:"พิมพ์คำถามเดิมซ้ำ ๆ", score:25, lack:"Prompt Clarity", improve:"Instruction Design", reason:"เพราะต้องปรับบริบทและเงื่อนไขให้ชัด" },
+      { text:"กำหนดบทบาท เป้าหมาย ข้อมูลนำเข้า รูปแบบคำตอบ และข้อจำกัด", score:92, strength:"Structured Prompting", reason:"เพราะช่วยให้ AI เข้าใจงานครบถ้วน" },
+      { text:"ด่า AI ว่าโง่", score:5, lack:"Tool Understanding", improve:"AI Interaction", reason:"เพราะไม่ช่วยให้ผลลัพธ์ดีขึ้น" },
+      { text:"ใช้ Prompt ยาวมากโดยไม่มีโครงสร้าง", score:35, lack:"Prompt Organization", improve:"Prompt Framework", reason:"เพราะความยาวไม่เท่ากับความชัดเจน" }
+    ]},
+    { key:"pe_q2", group:"Prompt Engineer", label:"Evaluation", market:84, q:"จะรู้ได้อย่างไรว่า Prompt ที่เขียนดีจริง?", options:[
+      { text:"ดูจากความรู้สึกอย่างเดียว", score:25, lack:"Evaluation Method", improve:"Prompt Testing", reason:"เพราะควรวัดผลด้วยเกณฑ์" },
+      { text:"ทดสอบหลายเคส เทียบ Accuracy และปรับ Prompt จากผลลัพธ์", score:90, strength:"Prompt Evaluation", reason:"เพราะทำให้ Prompt ใช้งานจริงได้เสถียร" },
+      { text:"ใช้คำสวย ๆ เยอะ ๆ", score:30, lack:"Output Control", improve:"Evaluation Criteria", reason:"เพราะคำสวยไม่ได้รับประกันความถูกต้อง" },
+      { text:"เปลี่ยนโมเดลทุกครั้งโดยไม่วัดผล", score:35, lack:"Experiment Control", improve:"A/B Testing", reason:"เพราะต้องควบคุมตัวแปรเพื่อเปรียบเทียบ" }
+    ]},
+    { key:"pe_q3", group:"Prompt Engineer", label:"Hallucination Control", market:86, q:"AI ให้ข้อมูลที่ดูน่าเชื่อถือแต่ไม่แน่ใจว่าจริง ควรทำอย่างไร?", options:[
+      { text:"เชื่อเลย เพราะ AI เขียนดี", score:15, lack:"Fact Checking", improve:"Source Verification", reason:"เพราะ AI อาจสร้างข้อมูลผิดได้" },
+      { text:"สั่งให้ AI อ้างอิงแหล่งข้อมูล และตรวจสอบกับแหล่งจริง", score:92, strength:"Hallucination Control", reason:"เพราะลดความเสี่ยงข้อมูลผิด" },
+      { text:"ลบส่วนที่ไม่แน่ใจทั้งหมด", score:35, lack:"Content Verification", improve:"Research Workflow", reason:"เพราะควรตรวจมากกว่าลบทิ้ง" },
+      { text:"ใช้คำว่า น่าจะ เพื่อเลี่ยงความรับผิดชอบ", score:20, lack:"Professional Responsibility", improve:"Accuracy Standards", reason:"เพราะงานจริงต้องชัดเจนและรับผิดชอบ" }
+    ]},
+    { key:"pe_q4", group:"Prompt Engineer", label:"Workflow Design", market:82, q:"ต้องสร้างระบบให้ AI ช่วยสรุปเอกสารหลายประเภท ควรออกแบบอย่างไร?", options:[
+      { text:"ใช้ Prompt เดียวกับทุกเอกสาร", score:30, lack:"Workflow Design", improve:"Prompt Templates", reason:"เพราะเอกสารแต่ละแบบต้องการวิธีอ่านต่างกัน" },
+      { text:"แยกประเภทเอกสาร สร้าง Template และกำหนด Output Schema", score:90, strength:"AI Workflow Architecture", reason:"เพราะช่วยให้ผลลัพธ์สม่ำเสมอ" },
+      { text:"ให้ AI เดาเองทั้งหมด", score:20, lack:"Control Mechanism", improve:"Output Specification", reason:"เพราะเสี่ยงผลลัพธ์ไม่ตรงงาน" },
+      { text:"ทำด้วยมือทั้งหมด", score:35, lack:"AI Adoption", improve:"Automation Thinking", reason:"เพราะงานซ้ำควรใช้ AI ช่วยเพิ่มประสิทธิภาพ" }
+    ]}
+  ],
+
+  "Power BI Specialist": [
+    { key:"pbi_q1", group:"Power BI Specialist", label:"Data Modeling", market:86, q:"ข้อมูลหลายตารางเชื่อมกันผิด ทำให้ตัวเลขรวมเพี้ยน ควรทำอย่างไร?", options:[
+      { text:"ทำกราฟต่อไปก่อน", score:20, lack:"Data Modeling", improve:"Relationship Design", reason:"เพราะ Model ผิดทำให้ทุกกราฟผิด" },
+      { text:"ตรวจ Relationship, Cardinality และสร้าง Star Schema", score:92, strength:"Power BI Data Modeling", reason:"เพราะ Model ที่ดีคือฐานของ Dashboard" },
+      { text:"รวมทุกตารางเป็นตารางเดียวเสมอ", score:35, lack:"Model Optimization", improve:"Schema Design", reason:"เพราะอาจทำให้ไฟล์หนักและวิเคราะห์ยาก" },
+      { text:"แก้ตัวเลขเองในกราฟ", score:10, lack:"Data Integrity", improve:"DAX Accuracy", reason:"เพราะเป็นการบิดเบือนข้อมูล" }
+    ]},
+    { key:"pbi_q2", group:"Power BI Specialist", label:"DAX", market:84, q:"ต้องคำนวณยอดขายสะสมรายเดือนใน Power BI ควรใช้ทักษะใด?", options:[
+      { text:"กรอกตัวเลขสะสมเอง", score:20, lack:"DAX Skill", improve:"Time Intelligence", reason:"เพราะควรให้ระบบคำนวณอัตโนมัติ" },
+      { text:"ใช้ DAX Measure และ Time Intelligence", score:90, strength:"DAX Calculation", reason:"เพราะเป็นทักษะสำคัญของ Power BI" },
+      { text:"Export ไป Excel ทุกครั้ง", score:35, lack:"BI Workflow", improve:"Power BI Automation", reason:"เพราะลดประโยชน์ของ Dashboard แบบ Interactive" },
+      { text:"ใช้กราฟวงกลมแทน", score:15, lack:"Metric Understanding", improve:"KPI Calculation", reason:"เพราะไม่แก้ปัญหาการคำนวณ" }
+    ]},
+    { key:"pbi_q3", group:"Power BI Specialist", label:"Dashboard UX", market:82, q:"Dashboard ผู้บริหารโหลดช้าและข้อมูลเยอะเกินไป ควรทำอย่างไร?", options:[
+      { text:"ใส่ Visual เพิ่มให้ครบทุกอย่าง", score:25, lack:"Performance Optimization", improve:"Dashboard Prioritization", reason:"เพราะ Visual มากทำให้โหลดช้า" },
+      { text:"ลด Visual ที่ไม่จำเป็น ใช้ KPI สำคัญ และ Optimize Model", score:90, strength:"BI Performance Optimization", reason:"เพราะ Dashboard ต้องเร็วและตอบโจทย์" },
+      { text:"เปลี่ยนสีพื้นหลัง", score:30, lack:"Problem Diagnosis", improve:"Performance Analysis", reason:"เพราะไม่ได้แก้สาเหตุโหลดช้า" },
+      { text:"ให้ผู้บริหารรอนานขึ้น", score:10, lack:"User Empathy", improve:"Executive UX", reason:"เพราะควรออกแบบให้ใช้งานสะดวก" }
+    ]},
+    { key:"pbi_q4", group:"Power BI Specialist", label:"Data Refresh", market:80, q:"ข้อมูล Dashboard ไม่อัปเดตตามเวลาที่ต้องการ ควรตรวจอะไร?", options:[
+      { text:"บอกผู้ใช้ให้กดรีเฟรชเองทุกครั้ง", score:25, lack:"Refresh Management", improve:"Scheduled Refresh", reason:"เพราะควรตั้งระบบอัปเดตอัตโนมัติ" },
+      { text:"ตรวจ Gateway, Data Source Credentials และ Schedule Refresh", score:90, strength:"Power BI Deployment", reason:"เพราะเป็นจุดสำคัญของการใช้งานจริง" },
+      { text:"ทำ Dashboard ใหม่ทั้งหมด", score:25, lack:"Troubleshooting", improve:"Power BI Service", reason:"เพราะควรหาสาเหตุเฉพาะจุดก่อน" },
+      { text:"ใช้รูปภาพแทน Dashboard", score:10, lack:"BI Understanding", improve:"Interactive Reporting", reason:"เพราะเสียความสามารถด้านข้อมูลสด" }
+    ]}
+  ],
+
+  "Python Data Analyst": [
+    { key:"py_q1", group:"Python Data Analyst", label:"Pandas Cleaning", market:86, q:"ไฟล์ CSV มีค่าว่างและชนิดข้อมูลผิด ควรทำอย่างไรด้วย Python?", options:[
+      { text:"วิเคราะห์ทันทีโดยไม่ตรวจ", score:20, lack:"Data Cleaning", improve:"Pandas Data Preparation", reason:"เพราะข้อมูลผิดชนิดทำให้ผลคำนวณผิด" },
+      { text:"ใช้ pandas ตรวจ dtype, missing values และแปลงข้อมูลก่อน", score:92, strength:"Pandas Cleaning", reason:"เพราะเป็นขั้นตอนพื้นฐานของ Python Analyst" },
+      { text:"แก้ทีละช่องด้วยมือทั้งหมด", score:35, lack:"Automation", improve:"Pandas Workflow", reason:"เพราะ Python เหมาะกับงานซ้ำจำนวนมาก" },
+      { text:"ลบคอลัมน์ที่มีปัญหาทุกคอลัมน์", score:25, lack:"Data Judgment", improve:"Missing Value Strategy", reason:"เพราะอาจสูญเสียข้อมูลสำคัญ" }
+    ]},
+    { key:"py_q2", group:"Python Data Analyst", label:"Visualization", market:82, q:"ต้องนำเสนอแนวโน้มยอดขายรายเดือน ควรใช้กราฟแบบใด?", options:[
+      { text:"Pie Chart รายเดือน", score:30, lack:"Chart Selection", improve:"Data Visualization", reason:"เพราะ Pie Chart ไม่เหมาะกับแนวโน้มเวลา" },
+      { text:"Line Chart พร้อมคำอธิบาย Insight", score:90, strength:"Visualization Reasoning", reason:"เพราะเหมาะกับข้อมูลตามเวลา" },
+      { text:"ตารางตัวเลขอย่างเดียว", score:45, lack:"Storytelling", improve:"Visual Communication", reason:"เพราะดูแนวโน้มได้ยาก" },
+      { text:"ใช้กราฟ 3D ให้สวย", score:25, lack:"Visual Clarity", improve:"Chart Simplicity", reason:"เพราะกราฟ 3D มักอ่านยากและบิดเบือน" }
+    ]},
+    { key:"py_q3", group:"Python Data Analyst", label:"Notebook Workflow", market:80, q:"Notebook วิเคราะห์ข้อมูลเริ่มรกและรันซ้ำไม่ได้ ควรทำอย่างไร?", options:[
+      { text:"ปล่อยไว้ ขอแค่ผลลัพธ์ออก", score:25, lack:"Reproducibility", improve:"Notebook Organization", reason:"เพราะงานวิเคราะห์ต้องตรวจซ้ำได้" },
+      { text:"จัดโครงสร้าง Cell แยก Load/Clean/Analyze/Visualize และใส่คำอธิบาย", score:90, strength:"Reproducible Analysis", reason:"เพราะช่วยให้ทีมอ่านและใช้งานต่อได้" },
+      { text:"ลบโค้ดเก่าทั้งหมดโดยไม่สำรอง", score:20, lack:"Version Control", improve:"Code Management", reason:"เพราะเสี่ยงเสียงานและย้อนกลับไม่ได้" },
+      { text:"รวมทุกอย่างไว้ใน Cell เดียว", score:30, lack:"Code Readability", improve:"Modular Thinking", reason:"เพราะแก้ไขและตรวจสอบยาก" }
+    ]},
+    { key:"py_q4", group:"Python Data Analyst", label:"Automation", market:84, q:"ต้องทำรายงานยอดขายซ้ำทุกสัปดาห์ ควรใช้ Python อย่างไร?", options:[
+      { text:"ทำมือใหม่ทุกสัปดาห์", score:30, lack:"Automation Thinking", improve:"Scheduled Scripts", reason:"เพราะเสียเวลางานซ้ำ" },
+      { text:"เขียนสคริปต์อ่านข้อมูล วิเคราะห์ และสร้างรายงานอัตโนมัติ", score:92, strength:"Analytics Automation", reason:"เพราะเพิ่มประสิทธิภาพและลดความผิดพลาด" },
+      { text:"ใช้สูตรเดาสุ่ม", score:10, lack:"Analytical Integrity", improve:"Validation", reason:"เพราะรายงานต้องน่าเชื่อถือ" },
+      { text:"ส่งข้อมูลดิบให้หัวหน้า", score:25, lack:"Reporting Skill", improve:"Insight Reporting", reason:"เพราะควรสรุปข้อมูลให้ใช้ตัดสินใจได้" }
+    ]}
+  ],
+
+  "AI Career / HR Tech Assistant": [
+    { key:"hr_q1", group:"AI Career / HR Tech Assistant", label:"Resume Screening", market:84, q:"ใช้ AI คัด Resume แล้วกลัวเกิด Bias ควรทำอย่างไร?", options:[
+      { text:"ให้ AI ตัดสินทั้งหมด", score:20, lack:"AI Ethics", improve:"Human Oversight", reason:"เพราะ AI อาจมีอคติจากข้อมูล" },
+      { text:"ตั้งเกณฑ์ชัด ตรวจผลลัพธ์ และให้มนุษย์ตัดสินขั้นสุดท้าย", score:92, strength:"Responsible AI in HR", reason:"เพราะลด Bias และเพิ่มความเป็นธรรม" },
+      { text:"คัดจากรูปโปรไฟล์", score:5, lack:"Fair Hiring", improve:"HR Ethics", reason:"เพราะไม่เกี่ยวกับความสามารถและเสี่ยงเลือกปฏิบัติ" },
+      { text:"สุ่มเลือกผู้สมัคร", score:15, lack:"Screening Process", improve:"Competency Criteria", reason:"เพราะไม่สะท้อนทักษะจริง" }
+    ]},
+    { key:"hr_q2", group:"AI Career / HR Tech Assistant", label:"Skill Matching", market:82, q:"ผู้ใช้มีทักษะไม่ตรงกับงานในฝัน ควรแนะนำอย่างไร?", options:[
+      { text:"บอกว่าไม่มีทางทำอาชีพนั้นได้", score:15, lack:"Career Coaching", improve:"Growth Mindset", reason:"เพราะควรเสนอเส้นทางพัฒนา" },
+      { text:"วิเคราะห์ Skill Gap และแนะนำคอร์ส/โปรเจกต์เพื่อปิดช่องว่าง", score:92, strength:"Career Path Recommendation", reason:"เพราะช่วยให้ผู้ใช้เห็นแผนที่ทำได้จริง" },
+      { text:"แนะนำงานมั่ว ๆ", score:10, lack:"Matching Logic", improve:"Career Analytics", reason:"เพราะคำแนะนำต้องอิงข้อมูล" },
+      { text:"ให้สมัครทุกงานพร้อมกัน", score:30, lack:"Job Strategy", improve:"Targeted Application", reason:"เพราะควรเลือกงานที่สอดคล้องกับทักษะและเป้าหมาย" }
+    ]},
+    { key:"hr_q3", group:"AI Career / HR Tech Assistant", label:"Interview Coaching", market:80, q:"ผู้ใช้ตอบสัมภาษณ์ไม่มั่นใจ ควรใช้ AI ช่วยอย่างไร?", options:[
+      { text:"ให้ AI แต่งคำตอบปลอมทั้งหมด", score:20, lack:"Authenticity", improve:"Interview Ethics", reason:"เพราะคำตอบควรสะท้อนตัวตนจริง" },
+      { text:"ให้ AI จำลองคำถาม ให้ Feedback และช่วยปรับโครงสร้างคำตอบ", score:90, strength:"AI Interview Coaching", reason:"เพราะฝึกได้จริงและยังคงความเป็นตัวเอง" },
+      { text:"บอกให้ท่องจำคำตอบเดียว", score:30, lack:"Adaptive Communication", improve:"STAR Method", reason:"เพราะสถานการณ์สัมภาษณ์เปลี่ยนได้" },
+      { text:"ไม่ต้องฝึก ไปตอบสด", score:25, lack:"Preparation", improve:"Mock Interview Practice", reason:"เพราะการฝึกช่วยลดความตื่นเต้น" }
+    ]},
+    { key:"hr_q4", group:"AI Career / HR Tech Assistant", label:"Privacy", market:86, q:"ระบบเก็บข้อมูล Resume และผลประเมินทักษะ ควรคำนึงถึงอะไร?", options:[
+      { text:"เอาข้อมูลไปขายต่อ", score:5, lack:"Privacy Ethics", improve:"Data Protection", reason:"เพราะละเมิดความเป็นส่วนตัว" },
+      { text:"ขอความยินยอม เก็บเท่าที่จำเป็น และปกป้องข้อมูล", score:92, strength:"Data Privacy Awareness", reason:"เพราะข้อมูลอาชีพและ Resume เป็นข้อมูลสำคัญ" },
+      { text:"เผยแพร่ผลประเมินทุกคน", score:10, lack:"Confidentiality", improve:"Privacy Policy", reason:"เพราะผู้ใช้ควบคุมข้อมูลของตนเองไม่ได้" },
+      { text:"ไม่แจ้งอะไรผู้ใช้", score:20, lack:"Transparency", improve:"Consent Management", reason:"เพราะระบบควรโปร่งใส" }
+    ]}
+  ]
+};
 
  function renderQuiz() {
   const quiz = byId('quiz');
   if (!quiz) return;
 
-  const customOptions = {
-    ai: [
-      { text: 'ไม่เคยใช้ AI มาก่อน', score: 25 },
-      { text: 'ใช้ ChatGPT ถามคำถามทั่วไป', score: 45 },
-      { text: 'ใช้ AI ช่วยเรียนหรือทำงาน', score: 70 },
-      { text: 'ใช้ AI สร้าง Workflow และ Automation', score: 90 }
-    ],
+  const selectedCareer = byId('targetCareer') ? byId('targetCareer').value : 'Data Analyst';
+  const questions = getCurrentQuestions();
 
-    prompt: [
-      { text: 'ไม่เคยเขียน Prompt', score: 25 },
-      { text: 'ใช้ Prompt สั้น ๆ ทั่วไป', score: 45 },
-      { text: 'ปรับแต่ง Prompt เพื่อให้ได้ผลลัพธ์ดีขึ้น', score: 70 },
-      { text: 'ออกแบบ Prompt ขั้นสูงและ Chain Prompt ได้', score: 90 }
-    ],
-
-    data: [
-      { text: 'ไม่เคยวิเคราะห์ข้อมูล', score: 25 },
-      { text: 'ใช้ Excel พื้นฐาน', score: 45 },
-      { text: 'ใช้ Pivot Table และ Dashboard', score: 70 },
-      { text: 'วิเคราะห์ข้อมูลเชิงลึกและนำเสนอ Insight ได้', score: 90 }
-    ],
-
-    sql: [
-      { text: 'ไม่เคยใช้ SQL', score: 25 },
-      { text: 'เขียน SELECT พื้นฐานได้', score: 45 },
-      { text: 'JOIN และ Aggregate ได้', score: 70 },
-      { text: 'ออกแบบฐานข้อมูลและ Query ซับซ้อนได้', score: 90 }
-    ],
-
-    human: [
-      { text: 'ยังไม่มั่นใจในการสื่อสาร', score: 25 },
-      { text: 'สื่อสารงานพื้นฐานได้', score: 45 },
-      { text: 'นำเสนอและทำงานเป็นทีมได้ดี', score: 70 },
-      { text: 'เป็นผู้นำทีมและแก้ปัญหาความขัดแย้งได้', score: 90 }
-    ],
-
-    career: [
-      { text: 'ไม่มี Portfolio', score: 25 },
-      { text: 'มีผลงานแต่ยังไม่จัดเป็น Portfolio', score: 45 },
-      { text: 'มี Portfolio พร้อมสมัครงาน', score: 70 },
-      { text: 'มี Portfolio พร้อม Case Study และ Project จริง', score: 90 }
-    ]
-  };
-
-  quiz.innerHTML = skills.map(s => {
-
-    const opts = customOptions[s.key]
-      .map(o => {
-        const selected = answers[s.key] === o.score ? 'selected' : '';
-
-        return `
-          <button type="button"
-                  class="option ${selected}"
-                  data-skill="${s.key}"
-                  data-score="${o.score}">
-            ${o.text}
-          </button>
-        `;
-      })
-      .join('');
+  quiz.innerHTML = `
+    <div class="white-card" style="border-left:8px solid #1dbea0;">
+      <span class="badge">Career Assessment</span>
+      <h2>คำถามเฉพาะอาชีพ: ${escapeHTML(selectedCareer)}</h2>
+      <p>ระบบจะแสดงคำถามตามสายอาชีพที่เลือก และใช้คำตอบไปวิเคราะห์จุดแข็ง/ทักษะที่ต้องพัฒนา</p>
+    </div>
+  ` + questions.map((s, index) => {
+    const opts = (s.options || []).map(o => {
+      const selected = answers[s.key] === o.score ? 'selected' : '';
+      return `
+        <button type="button"
+                class="option ${selected}"
+                data-skill="${s.key}"
+                data-score="${o.score}">
+          ${escapeHTML(o.text)}
+        </button>
+      `;
+    }).join('');
 
     return `
       <div class="white-card">
-        <p><b style="color:#1dbea0">${s.group}</b></p>
-        <h2>${s.q}</h2>
+        <p><b style="color:#1dbea0">${escapeHTML(s.group)}</b> • ${escapeHTML(s.label)}</p>
+        <h2>Q${index + 1}: ${escapeHTML(s.q)}</h2>
         ${opts}
       </div>
     `;
@@ -1333,7 +1511,7 @@ Logout
     { title: 'Digital Marketing Executive', company: 'Tellscore', match: 78, salary: '22,000 - 40,000', skill: 'SEO, Analytics, AI Tools' }
   ];
 
-  let answers = { ai: 45, prompt: 25, data: 45, sql: 25, human: 70, career: 45 };
+  let answers = buildDefaultAnswers();
   let cart = [];
   let radarChart = null;
   let teacherChart = null;
@@ -1342,9 +1520,45 @@ Logout
     return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
   function byId(id) { return document.getElementById(id); }
-  function average() { const values = Object.values(answers); return Math.round(values.reduce((a, b) => a + b, 0) / values.length); }
   function baht(n) { return Number(n).toLocaleString('th-TH'); }
-  function getGaps() { return skills.map(s => Object.assign({}, s, { gap: Math.max(s.market - answers[s.key], 0) })).sort((a,b)=>b.gap-a.gap); }
+
+  function getSelectedCareer(){
+    return byId('targetCareer') ? byId('targetCareer').value : 'Data Analyst';
+  }
+
+  function getCurrentQuestions(){
+    const career = getSelectedCareer();
+    return careerQuestionBank[career] || careerQuestionBank['Data Analyst'];
+  }
+
+  function buildDefaultAnswers(){
+    const base = { ai:45, prompt:45, data:45, sql:45, human:45, career:45 };
+    Object.values(careerQuestionBank).flat().forEach(q => {
+      base[q.key] = 45;
+    });
+    return base;
+  }
+
+  function average() {
+    const questions = getCurrentQuestions();
+    const values = questions.map(q => Number(answers[q.key] || 45));
+    return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+  }
+
+  function getGaps() {
+    return getCurrentQuestions()
+      .map(s => {
+        const score = Number(answers[s.key] || 45);
+        const selectedOption = (s.options || []).find(o => o.score === score) || null;
+        return Object.assign({}, s, {
+          score,
+          selectedOption,
+          gap: Math.max(s.market - score, 0)
+        });
+      })
+      .sort((a,b)=>b.gap-a.gap);
+  }
+
   function weakSkillKeys() { return getGaps().filter(g => g.gap >= 20).map(g => g.key); }
 
 
@@ -1355,6 +1569,7 @@ Logout
     section.classList.add('active');
     document.querySelectorAll('nav button').forEach(btn => btn.classList.toggle('active', btn.dataset.page === id));
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (id === 'assessment') renderQuiz();
     if (id === 'dashboard') renderCharts();
     if (id === 'teacher') renderTeacherChart();
     if (id === 'marketplace') renderCourses();
@@ -1420,6 +1635,10 @@ function loginUser(){
   );
 
   document.getElementById('mainMenu').classList.remove('hide-before-login');
+  loadSavedData();
+  renderQuiz();
+  calculateResult();
+  loadUserInfo();
   showPage('home');
 } else {
   alert('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
@@ -1438,41 +1657,62 @@ function logoutUser(){
   
 
   function setAnswer(key, score) {
-    if (!Object.prototype.hasOwnProperty.call(answers, key)) return;
     answers[key] = Number(score);
+    saveAssessment();
     renderQuiz();
     calculateResult();
   }
 
   function calculateResult() {
     const avg = average();
-    [['homeScore', avg + '%'], ['dashScore', avg + '%']].forEach(([id, text]) => { if (byId(id)) byId(id).textContent = text; });
+    [['homeScore', avg + '%'], ['dashScore', avg + '%']].forEach(([id, text]) => {
+      if (byId(id)) byId(id).textContent = text;
+    });
     if (byId('homeBar')) byId('homeBar').style.width = avg + '%';
 
+    const questions = getCurrentQuestions();
+    const selectedCareer = getSelectedCareer();
+
     if (byId('skillBars')) {
-      byId('skillBars').innerHTML = skills.map(s => {
-        const score = answers[s.key];
+      byId('skillBars').innerHTML = `
+        <p><b>อาชีพเป้าหมาย:</b> ${escapeHTML(selectedCareer)}</p>
+      ` + questions.map(s => {
+        const score = Number(answers[s.key] || 45);
         return '<p><b>' + escapeHTML(s.label) + '</b> <span style="float:right">' + score + '%</span></p><div class="bar-bg"><div class="bar" style="width:' + score + '%"></div></div>';
       }).join('');
     }
 
     const gaps = getGaps();
     if (byId('gapList')) {
-      byId('gapList').innerHTML = gaps.slice(0,3).map(g => {
-        const course = courses.find(c => c.skill === g.key);
-        const banner = course ? '<div class="white-card"><h3>แนะนำคอร์ส: ' + escapeHTML(course.title) + '</h3><p>' + escapeHTML(course.desc) + '</p><p class="price">' + baht(course.price) + ' บาท</p><button class="btn" data-add-course="' + course.id + '">เพิ่มลงตะกร้า</button></div>' : '';
-        return '<p><b>' + escapeHTML(g.label) + '</b> ยังขาด ' + g.gap + '% เมื่อเทียบกับตลาดแรงงาน</p>' + banner;
+      byId('gapList').innerHTML = `
+        <div class="white-card">
+          <h2>ผลวิเคราะห์เฉพาะอาชีพ: ${escapeHTML(selectedCareer)}</h2>
+          <p><b>คะแนนรวม:</b> ${avg}%</p>
+        </div>
+      ` + gaps.map(g => {
+        const opt = g.selectedOption || {};
+        const analysis = opt.strength
+          ? `<p><b>จุดแข็ง:</b> ${escapeHTML(opt.strength)}</p>`
+          : `<p><b>ขาด:</b> ${escapeHTML(opt.lack || g.label)}</p><p><b>ต้องเพิ่ม:</b> ${escapeHTML(opt.improve || 'ฝึกทำโปรเจกต์จริงและเรียนคอร์สเสริม')}</p>`;
+        return `
+          <div class="white-card">
+            <h3>${escapeHTML(g.label)}</h3>
+            <p><b>คะแนนคุณ:</b> ${g.score}% | <b>ตลาดต้องการ:</b> ${g.market}% | <b>Gap:</b> ${g.gap}%</p>
+            ${analysis}
+            <p><b>เพราะ:</b> ${escapeHTML(opt.reason || 'ทักษะนี้มีผลต่อความพร้อมในการทำงานจริง')}</p>
+          </div>
+        `;
       }).join('');
     }
 
     if (byId('careerTable')) {
       const career = [
-        ['AI Content Creator', Math.min(98, avg + 25), 'คอร์ส Prompt + บริษัทลงประกาศงาน'],
-        ['UX Researcher', Math.min(92, avg + 13), 'คอร์ส UX + ติว Portfolio'],
-        ['Data Analyst', Math.min(88, avg + 6), 'คอร์ส SQL / Power BI'],
-        ['Digital Marketing', Math.min(86, avg + 10), 'คอร์ส AI Marketing']
+        [selectedCareer, avg, 'คำถามและ Skill Gap วิเคราะห์จากอาชีพที่เลือก'],
+        ['AI Content Creator', Math.min(98, avg + 8), 'คอร์ส AI Content + Prompt'],
+        ['Data Analyst', Math.min(95, avg + 6), 'คอร์ส SQL / Power BI / Python'],
+        ['UX/UI Designer', Math.min(92, avg + 5), 'คอร์ส UX Research / Figma']
       ].sort((a,b)=>b[1]-a[1]);
-      byId('careerTable').innerHTML = career.map(c => '<tr><td><b>' + c[0] + '</b></td><td><span class="badge">' + c[1] + '%</span></td><td>' + c[2] + '</td></tr>').join('');
+      byId('careerTable').innerHTML = career.map(c => '<tr><td><b>' + escapeHTML(c[0]) + '</b></td><td><span class="badge">' + c[1] + '%</span></td><td>' + escapeHTML(c[2]) + '</td></tr>').join('');
     }
 
     if (byId('moduleList')) {
@@ -1484,14 +1724,15 @@ function logoutUser(){
     calculateResult();
     const ctx = byId('radarChart');
     if (!ctx || typeof Chart === 'undefined') return;
+    const questions = getCurrentQuestions();
     if (radarChart) radarChart.destroy();
     radarChart = new Chart(ctx, {
       type: 'radar',
       data: {
-        labels: skills.map(s => s.label),
+        labels: questions.map(s => s.label),
         datasets: [
-          { label: 'ผู้ใช้', data: skills.map(s => answers[s.key]), borderColor: '#271f66', backgroundColor: 'rgba(39,31,102,.18)' },
-          { label: 'ตลาดแรงงาน', data: skills.map(s => s.market), borderColor: '#1dbea0', backgroundColor: 'rgba(29,190,160,.20)' }
+          { label: 'ผู้ใช้', data: questions.map(s => Number(answers[s.key] || 45)), borderColor: '#271f66', backgroundColor: 'rgba(39,31,102,.18)' },
+          { label: 'ตลาดแรงงาน', data: questions.map(s => s.market), borderColor: '#1dbea0', backgroundColor: 'rgba(29,190,160,.20)' }
         ]
       },
       options: { responsive: true, scales: { r: { min: 0, max: 100 } } }
@@ -1579,11 +1820,14 @@ function logoutUser(){
 
   function saveProfile() {
     const old = JSON.parse(localStorage.getItem('futureReadyUser') || '{}');
-   const user = Object.assign({}, old, {
- career: byId('targetCareer').value,
- updatedAt: new Date().toLocaleString('th-TH')
-});
+    const user = Object.assign({}, old, {
+      career: byId('targetCareer').value,
+      updatedAt: new Date().toLocaleString('th-TH')
+    });
     localStorage.setItem('futureReadyUser', JSON.stringify(user));
+    renderQuiz();
+    calculateResult();
+    loadUserInfo();
   }
 
   function saveAssessment() {
@@ -1593,14 +1837,15 @@ function logoutUser(){
 
   function loadSavedData() {
     try {
+      answers = buildDefaultAnswers();
       const savedAnswers = localStorage.getItem('futureReadyAnswers');
       if (savedAnswers) answers = Object.assign({}, answers, JSON.parse(savedAnswers));
+
       const user = JSON.parse(localStorage.getItem('futureReadyUser') || '{}');
       if (user.name) {
         byId('regName').value = user.name || '';
         byId('regEmail').value = user.email || '';
-        if (user.career) byId('targetCareer').value = user.career;
-        
+        if (user.career && byId('targetCareer')) byId('targetCareer').value = user.career;
         byId('loginStatus').textContent = 'กำลังใช้งานบัญชี: ' + user.name;
       }
     } catch (e) { console.warn(e); }
@@ -1622,7 +1867,7 @@ function logoutUser(){
 }
 
   function resetAssessment() {
-    answers = { ai:45, prompt:25, data:45, sql:25, human:70, career:45 };
+    answers = buildDefaultAnswers();
     localStorage.removeItem('futureReadyAnswers');
     localStorage.removeItem('futureReadyScore');
     renderQuiz();
@@ -1691,7 +1936,11 @@ function logoutUser(){
 
 byId('loginBtn')
 .addEventListener('click', loginUser);
-    byId('targetCareer').addEventListener('change', saveProfile);
+    byId('targetCareer').addEventListener('change', function(){
+  saveProfile();
+  renderQuiz();
+  calculateResult();
+});
   
     byId('analyzeBtn').addEventListener('click', () => { calculateResult(); saveAssessment(); go('dashboard'); });
     byId('resetBtn').addEventListener('click', resetAssessment);
