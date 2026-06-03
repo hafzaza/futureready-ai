@@ -767,9 +767,7 @@ footer p { color: #dff9f4; }
   line-height:1.5;
   padding:18px;
 }
-.hide-before-login{
-  display:none !important;
-}
+/* hide-before-login removed – nav always visible */
 
 /* Bigger, easier-to-tap nav buttons */
 nav button {
@@ -797,16 +795,1015 @@ nav button[onclick="logoutUser()"] {
   border: none;
   min-height: 44px;
 }
+
+/* Free tier notice bar */
+.free-tier-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #1a1350 0%, #271f66 100%);
+  border: 2px solid #1dbea0;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: white;
+  font-size: 15px;
+}
+.free-tier-notice.hidden { display: none; }
+
+/* Locked course card */
+.course-locked {
+  position: relative;
+  overflow: hidden;
+  opacity: 0.75;
+  filter: grayscale(30%);
+}
+.course-locked::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(15,10,40,0.55);
+  border-radius: inherit;
+  z-index: 1;
+}
+.lock-overlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+.lock-icon {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.lock-msg {
+  font-size: 14px;
+  color: #c0bde0;
+}
+.badge-locked {
+  background: #7c3aed !important;
+  color: white !important;
+}
+
+/* ===== PREMIUM PRO STYLES ===== */
+.pro{
+  border:3px solid gold;
+  background:linear-gradient(160deg,#fffbe6 0%,#fff 60%);
+}
+.pro h2{ color:#7c5c00; }
+
+/* Pro nav menu tab */
+#proMenu {
+  display:none;
+}
+#proMenu.show {
+  display:contents;
+}
+nav button.pro-tab {
+  background: linear-gradient(135deg,#7c3aed,#1dbea0);
+  color:#fff !important;
+  border:none;
+  font-weight:700;
+}
+nav button.pro-tab:hover {
+  opacity:0.9;
+}
+
+/* Pro section pages */
+.pro-section-header {
+  background:linear-gradient(135deg,#271f66 0%,#1dbea0 100%);
+  border-radius:20px;
+  padding:32px;
+  color:#fff;
+  margin-bottom:28px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.pro-badge-icon {
+  font-size:48px;
+  line-height:1;
+}
+.pro-section-header h1 { color:#fff; margin:0 0 6px; }
+.pro-section-header p  { color:rgba(255,255,255,.8); margin:0; }
+
+/* Resume Analyzer */
+.resume-dropzone {
+  border:2px dashed #1dbea0;
+  border-radius:16px;
+  padding:40px;
+  text-align:center;
+  cursor:pointer;
+  transition:background .2s;
+  background:#f0fdfb;
+}
+.resume-dropzone:hover { background:#e0faf5; }
+.resume-result-card {
+  background:#fff;
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  margin-top:20px;
+}
+.skill-bar-wrap { margin:8px 0; }
+.skill-bar-label { font-size:13px; color:#444; display:flex; justify-content:space-between; margin-bottom:4px; }
+.skill-bar-bg { background:#e5e7eb; border-radius:99px; height:8px; }
+.skill-bar-fill { height:8px; border-radius:99px; background:linear-gradient(90deg,#271f66,#1dbea0); transition:width .6s; }
+
+/* Mock Interview */
+.interview-chat {
+  background:#f8fafc;
+  border-radius:16px;
+  padding:20px;
+  min-height:220px;
+  max-height:340px;
+  overflow-y:auto;
+  margin-bottom:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.chat-bubble-ai {
+  background:#271f66;
+  color:#fff;
+  border-radius:14px 14px 14px 4px;
+  padding:12px 16px;
+  max-width:80%;
+  font-size:15px;
+  line-height:1.5;
+}
+.chat-bubble-user {
+  background:#1dbea0;
+  color:#fff;
+  border-radius:14px 14px 4px 14px;
+  padding:12px 16px;
+  max-width:80%;
+  align-self:flex-end;
+  font-size:15px;
+  line-height:1.5;
+}
+.interview-input-row {
+  display:flex; gap:10px;
+}
+.interview-input-row input {
+  flex:1; padding:12px 16px; border-radius:12px;
+  border:1.5px solid #d1d5db; font-size:15px;
+}
+.interview-input-row button {
+  padding:12px 20px; border-radius:12px; border:none;
+  background:#271f66; color:#fff; font-weight:700; cursor:pointer;
+}
+
+/* Career Roadmap */
+.roadmap-timeline {
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin-top:16px;
+  position:relative;
+  padding-left:36px;
+}
+.roadmap-timeline::before {
+  content:'';
+  position:absolute;
+  left:14px; top:8px; bottom:8px;
+  width:3px;
+  background:linear-gradient(180deg,#271f66,#1dbea0);
+  border-radius:3px;
+}
+.roadmap-item {
+  position:relative;
+  background:#fff;
+  border-radius:14px;
+  padding:16px 20px;
+  margin-bottom:16px;
+  box-shadow:0 2px 12px rgba(0,0,0,.07);
+}
+.roadmap-item::before {
+  content:'';
+  position:absolute;
+  left:-26px; top:20px;
+  width:14px; height:14px;
+  border-radius:50%;
+  background:#1dbea0;
+  border:3px solid #fff;
+  box-shadow:0 0 0 2px #1dbea0;
+}
+.roadmap-item h3 { margin:0 0 6px; color:#271f66; font-size:15px; }
+.roadmap-item p  { margin:0; color:#555; font-size:14px; line-height:1.5; }
+.roadmap-month { font-size:11px; font-weight:700; color:#1dbea0; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+
+/* Certificate */
+.certificate-box {
+  border:4px solid #271f66;
+  border-radius:24px;
+  padding:40px;
+  text-align:center;
+  background:linear-gradient(160deg,#fff8e1,#fff);
+  box-shadow:0 8px 32px rgba(39,31,102,.15);
+  max-width:600px;
+  margin:0 auto;
+}
+.cert-logo { font-size:48px; margin-bottom:8px; }
+.cert-title { font-size:22px; font-weight:700; color:#271f66; margin:0 0 4px; }
+.cert-sub { font-size:13px; color:#888; margin:0 0 24px; }
+.cert-name { font-size:28px; font-weight:700; color:#1dbea0; margin:12px 0; }
+.cert-score { font-size:48px; font-weight:700; color:#271f66; }
+.cert-score-label { font-size:13px; color:#888; margin-bottom:20px; }
+.cert-date { font-size:12px; color:#aaa; margin-top:20px; }
+
+/* Support chat */
+.support-msg { background:#fff; border-radius:14px; padding:16px 20px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+.support-msg h4 { margin:0 0 4px; color:#271f66; font-size:14px; }
+.support-msg p  { margin:0; font-size:14px; color:#555; }
+.support-tag { display:inline-block; font-size:11px; padding:2px 10px; border-radius:99px; font-weight:700; margin-right:6px; }
+.tag-open   { background:#fef3c7; color:#92400e; }
+.tag-closed { background:#d1fae5; color:#065f46; }
+
+/* Pro lock overlay */
+.pro-lock-overlay {
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; padding:48px 24px; text-align:center;
+}
+.pro-lock-overlay .lock-icon-big { font-size:56px; margin-bottom:16px; }
+.pro-lock-overlay h2 { color:#271f66; margin:0 0 8px; }
+.pro-lock-overlay p  { color:#666; margin:0 0 20px; }
+
+/* ===== END PREMIUM PRO STYLES ===== */
+
+/* Premium CTA button */
+.btn-premium-cta {
+  background: linear-gradient(135deg, #7c3aed, #1dbea0);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+/* Cart icon button */
+.cart-icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+  color: white;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  margin-left: 8px;
+}
+.cart-icon-btn:hover {
+  background: rgba(29,190,160,0.3);
+  border-color: #1dbea0;
+}
+.cart-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #e9565f;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+/* ================================================================
+   ANIMATION SYSTEM — DIGITECH FutureReady AI
+   ================================================================ */
+
+/* ---------- Keyframes ---------- */
+@keyframes heroGradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1); opacity: 0.7; }
+  50%  { transform: translateY(-18px) scale(1.08); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.7; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(29,190,160,0.5); }
+  50%       { box-shadow: 0 0 0 10px rgba(29,190,160,0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes particleFloat {
+  0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-100px) translateX(60px); opacity: 0; }
+}
+
+@keyframes barGrow {
+  from { width: 0 !important; }
+  to   { /* width set inline */ }
+}
+
+@keyframes counterUp {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes navSlideIn {
+  from { transform: translateY(-6px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes cardHover3D {
+  from { transform: perspective(600px) rotateX(0deg) translateY(0); }
+  to   { transform: perspective(600px) rotateX(-2deg) translateY(-6px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(29,190,160,0.35); }
+  50%       { box-shadow: 0 0 24px 8px rgba(29,190,160,0.18); }
+}
+
+@keyframes textGradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes orbFloat1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(40px,-30px) scale(1.1); }
+  66%     { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes orbFloat2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(-50px, 20px) scale(1.05); }
+  66%     { transform: translate(30px,-40px) scale(0.9); }
+}
+
+@keyframes typewriterBlink {
+  0%,100% { border-right-color: #1dbea0; }
+  50%     { border-right-color: transparent; }
+}
+
+/* ---------- Hero Banner Animated Background ---------- */
+.hero-banner {
+  background:
+    linear-gradient(220deg, rgba(39,31,102,.95) 0%, rgba(22,17,63,.9) 30%, rgba(29,190,160,.45) 70%, rgba(39,31,102,.92) 100%),
+    url('assets/dgt.png') !important;
+  background-size: 300% 300%, cover !important;
+  background-position: 0% 50%, center !important;
+  animation: heroGradientShift 10s ease infinite;
+}
+
+/* Hero orbs */
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,190,160,0.18) 0%, transparent 70%);
+  top: -120px; right: 5%;
+  animation: orbFloat1 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  right: -80px; bottom: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,190,160,0.22) 0%, transparent 70%);
+  animation: orbFloat2 10s ease-in-out infinite;
+}
+
+/* Hero text entrance */
+.hero-banner > div > p:first-child { animation: fadeInLeft 0.7s ease both; }
+.hero-banner > div > h1           { animation: fadeInUp 0.8s 0.15s ease both; }
+.hero-banner > div > p:nth-child(3){ animation: fadeInUp 0.8s 0.3s ease both; }
+.hero-banner > div > .btn:first-of-type { animation: fadeInUp 0.8s 0.45s ease both; }
+.hero-banner > div > .btn:last-of-type  { animation: fadeInUp 0.8s 0.55s ease both; }
+
+/* ---------- Header / Nav ---------- */
+header {
+  transition: box-shadow 0.3s, background 0.3s;
+}
+header.scrolled {
+  background: rgba(22,17,63,0.98) !important;
+  box-shadow: 0 4px 28px rgba(0,0,0,0.35);
+}
+
+nav button {
+  transition: background 0.25s, color 0.25s, transform 0.18s, box-shadow 0.25s !important;
+  position: relative;
+  overflow: hidden;
+}
+nav button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.2s;
+  border-radius: inherit;
+  pointer-events: none;
+}
+nav button:hover::after { background: rgba(255,255,255,0.07); }
+nav button:hover { transform: translateY(-2px); }
+nav button:active { transform: scale(0.96); }
+
+/* ---------- Breadcrumb animated gradient ---------- */
+.breadcrumb-band {
+  background: linear-gradient(220deg, #271f66, #1dbea0, #16113f, #15947d) !important;
+  background-size: 300% 300% !important;
+  animation: heroGradientShift 8s ease infinite;
+}
+
+/* ---------- Cards scroll-reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card 3D hover */
+.card, .white-card, .feature-card {
+  transition: transform 0.28s ease, box-shadow 0.28s ease !important;
+  will-change: transform;
+}
+.card:hover, .white-card:hover, .feature-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 18px 44px rgba(39,31,102,0.18) !important;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  transition: background 0.22s, transform 0.2s, box-shadow 0.22s !important;
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.22);
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s;
+  opacity: 0;
+  pointer-events: none;
+}
+.btn:active::after {
+  width: 200px; height: 200px;
+  opacity: 0;
+}
+.btn:hover {
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 12px 30px rgba(29,190,160,0.35) !important;
+}
+
+/* ---------- Badge shimmer ---------- */
+.badge {
+  background: linear-gradient(90deg, #e9f8f5 30%, #b2f0e7 50%, #e9f8f5 70%) !important;
+  background-size: 200% auto !important;
+  animation: shimmer 2.5s linear infinite;
+  color: var(--main-green-dark) !important;
+}
+
+/* ---------- Score number ---------- */
+.score {
+  animation: counterUp 0.6s ease both;
+  display: inline-block;
+}
+
+/* ---------- Bar animated grow ---------- */
+.bar {
+  animation: barGrow 1.1s cubic-bezier(.25,.8,.25,1) both;
+  animation-delay: 0.3s;
+}
+
+/* ---------- Roadmap dot pulse ---------- */
+.roadmap-item::before {
+  animation: pulseDot 2s ease infinite;
+}
+
+/* ---------- Progress / skill bars ---------- */
+.skill-bar-fill {
+  transition: width 1s cubic-bezier(.25,.8,.25,1) !important;
+}
+
+/* ---------- Pricing card glow (premium) ---------- */
+.premium, .pro {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ---------- Pricing card button ---------- */
+.pricing-card button {
+  transition: transform 0.2s, background 0.2s !important;
+}
+.pricing-card button:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+  background: #1dbea0 !important;
+}
+
+/* ---------- Pro section header ---------- */
+.pro-section-header {
+  background: linear-gradient(135deg, #271f66, #1dbea0, #16113f) !important;
+  background-size: 200% 200% !important;
+  animation: heroGradientShift 6s ease infinite;
+}
+
+/* ---------- Table row hover ---------- */
+tbody tr {
+  transition: background 0.2s;
+}
+tbody tr:hover {
+  background: #f0fdfb !important;
+}
+
+/* ---------- Input focus animation ---------- */
+input, select {
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s !important;
+}
+input:focus, select:focus {
+  transform: scale(1.01);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: linear-gradient(135deg, #16113f, #271f66) !important;
+  background-size: 200% 200% !important;
+  animation: heroGradientShift 12s ease infinite;
+}
+
+/* ---------- Floating particles canvas ---------- */
+#particleCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1s;
+}
+body.hero-visible #particleCanvas { opacity: 1; }
+
+/* ---------- Loading page transition ---------- */
+.page-transition {
+  animation: fadeInUp 0.4s ease both;
+}
+
+/* ---------- Certificate box shimmer border ---------- */
+.certificate-box {
+  border-color: transparent !important;
+  background-image: linear-gradient(white,white),
+    linear-gradient(135deg,#271f66,#1dbea0,#e9c46a,#271f66) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  border: 4px solid transparent !important;
+  background-size: auto, 300% 300% !important;
+  animation: heroGradientShift 4s ease infinite;
+}
+
+/* ---------- Scroll-to-top button ---------- */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--main-green-color);
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 16px rgba(29,190,160,0.35);
+}
+#scrollTopBtn.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+#scrollTopBtn:hover {
+  background: var(--main-green-dark);
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(29,190,160,0.45);
+}
+
+/* ---------- Page loading overlay ---------- */
+#pageLoader {
+  position: fixed; inset: 0;
+  background: #16113f;
+  z-index: 99999;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 18px;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+#pageLoader.done {
+  opacity: 0;
+  visibility: hidden;
+}
+.loader-ring {
+  width: 54px; height: 54px;
+  border: 4px solid rgba(255,255,255,0.15);
+  border-top-color: #1dbea0;
+  border-radius: 50%;
+  animation: rotateSlow 0.8s linear infinite;
+}
+.loader-text {
+  color: #1dbea0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* ================================================================
+   AUTH MODAL (Login / Register Popup)
+   ================================================================ */
+@keyframes authModalIn {
+  from { opacity: 0; transform: translateY(-24px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes authShake {
+  0%,100%{ transform: translateX(0); }
+  20%    { transform: translateX(-8px); }
+  40%    { transform: translateX(8px); }
+  60%    { transform: translateX(-6px); }
+  80%    { transform: translateX(6px); }
+}
+
+#authModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#authModal.open { display: flex; }
+
+.auth-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15,10,40,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.auth-modal-box {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 32px 80px rgba(39,31,102,0.32), 0 0 0 1px rgba(29,190,160,0.15);
+  overflow: hidden;
+  animation: authModalIn 0.35s cubic-bezier(.25,.8,.25,1) both;
+}
+
+.auth-modal-header {
+  background: linear-gradient(135deg, #271f66, #1dbea0);
+  background-size: 200% 200%;
+  animation: heroGradientShift 6s ease infinite;
+  padding: 32px 32px 28px;
+  text-align: center;
+  position: relative;
+}
+.auth-modal-header .auth-logo {
+  font-size: 38px;
+  margin-bottom: 6px;
+}
+.auth-modal-header h2 {
+  color: #fff;
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+.auth-modal-header p {
+  color: rgba(255,255,255,0.75);
+  margin: 0;
+  font-size: 13px;
+}
+.auth-close-btn {
+  position: absolute;
+  top: 14px; right: 16px;
+  background: rgba(255,255,255,0.18);
+  border: none;
+  color: #fff;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  line-height: 1;
+}
+.auth-close-btn:hover { background: rgba(255,255,255,0.32); }
+
+/* Tab switcher */
+.auth-tabs {
+  display: flex;
+  border-bottom: 2px solid #f0f0f0;
+  background: #fafafa;
+}
+.auth-tab {
+  flex: 1;
+  padding: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  color: #888;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.auth-tab.active {
+  color: #271f66;
+  border-bottom-color: #1dbea0;
+}
+
+/* Form panels */
+.auth-panel {
+  display: none;
+  padding: 28px 32px 32px;
+}
+.auth-panel.active { display: block; }
+
+.auth-input-group {
+  position: relative;
+  margin-bottom: 14px;
+}
+.auth-input-group .auth-icon {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
+.auth-input-group input,
+.auth-input-group select {
+  padding-left: 42px !important;
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 0;
+  background: #f8fafc;
+}
+.auth-input-group input:focus,
+.auth-input-group select:focus {
+  border-color: #1dbea0;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(29,190,160,0.12);
+  outline: none;
+  transform: none;
+}
+
+.auth-btn-primary {
+  width: 100%;
+  height: 50px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #271f66, #1dbea0);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 8px 24px rgba(29,190,160,0.28);
+}
+.auth-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(29,190,160,0.38);
+}
+.auth-btn-primary:active { transform: scale(0.97); }
+
+.auth-divider {
+  text-align: center;
+  color: #aaa;
+  font-size: 13px;
+  margin: 16px 0 12px;
+  position: relative;
+}
+.auth-divider::before, .auth-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%; width: 40%;
+  height: 1px;
+  background: #e5e7eb;
+}
+.auth-divider::before { left: 0; }
+.auth-divider::after  { right: 0; }
+
+.auth-switch-link {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #666;
+}
+.auth-switch-link button {
+  background: none;
+  border: none;
+  color: #1dbea0;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.auth-status {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 10px;
+  min-height: 18px;
+  color: #0f766e;
+}
+
+/* Toast notification */
+#authToast {
+  position: fixed;
+  bottom: 80px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #271f66;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 8px 24px rgba(39,31,102,0.35);
+  pointer-events: none;
+  white-space: nowrap;
+  border-left: 4px solid #1dbea0;
+}
+#authToast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ================================================================
+   END AUTH MODAL
+   ================================================================ */
+/* ================================================================
+   END ANIMATIONS
+   ================================================================ */
   </style>
   
 </head>
 
 <body>
+
+<!-- Page Loader -->
+<div id="pageLoader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">DIGITECH FUTUREREADY AI</div>
+</div>
+
+<!-- Scroll to top -->
+<button id="scrollTopBtn" title="กลับด้านบน">↑</button>
+
+<!-- Toast notification -->
+<div id="authToast"></div>
+
+<!-- ===== AUTH MODAL (Login / Register Popup) ===== -->
+<div id="authModal">
+  <div class="auth-backdrop" onclick="closeAuthModal()"></div>
+  <div class="auth-modal-box">
+    <!-- Header -->
+    <div class="auth-modal-header">
+      <div class="auth-logo"></div>
+      <h2>DIGITECH FutureReady AI</h2>
+      <p>มหาวิทยาลัยเทคโนโลยีสุรนารี</p>
+      <button class="auth-close-btn" onclick="closeAuthModal()">✕</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')"> เข้าสู่ระบบ</button>
+      <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')"> สมัครสมาชิก</button>
+    </div>
+
+    <!-- Login Panel -->
+    <div class="auth-panel active" id="panelLogin">
+      <div class="auth-input-group">
+        <span class="auth-icon"></span>
+        <input id="popupLoginEmail" type="email" placeholder="อีเมล">
+      </div>
+      <div class="auth-input-group">
+        <span class="auth-icon"></span>
+        <input id="popupLoginPassword" type="password" placeholder="รหัสผ่าน">
+      </div>
+      <button class="auth-btn-primary" onclick="loginUser()">เข้าสู่ระบบ</button>
+      <div class="auth-status" id="loginPopupStatus"></div>
+      <div class="auth-switch-link">
+        ยังไม่มีบัญชี? <button onclick="switchAuthTab('register')">สมัครสมาชิกฟรี</button>
+      </div>
+    </div>
+
+    <!-- Register Panel -->
+    <div class="auth-panel" id="panelRegister">
+      <div class="auth-input-group">
+        <span class="auth-icon"></span>
+        <input id="popupRegName" placeholder="ชื่อ-นามสกุล">
+      </div>
+      <div class="auth-input-group">
+        <span class="auth-icon"></span>
+        <input id="popupRegEmail" type="email" placeholder="อีเมล">
+      </div>
+      <div class="auth-input-group">
+        <span class="auth-icon"></span>
+        <input id="popupRegPassword" type="password" placeholder="รหัสผ่าน (อย่างน้อย 6 ตัว)">
+      </div>
+      <div class="auth-input-group">
+        <span class="auth-icon"></span>
+        <select id="popupTargetCareer">
+          <option value="">— เลือกสายอาชีพที่สนใจ —</option>
+          <option>Data Analyst</option>
+          <option>UX/UI Designer</option>
+          <option>AI Content Creator</option>
+          <option>Digital Marketing</option>
+          <option>Prompt Engineer</option>
+          <option>Power BI Specialist</option>
+          <option>Python Data Analyst</option>
+          <option>AI Career / HR Tech Assistant</option>
+        </select>
+      </div>
+      <button class="auth-btn-primary" onclick="registerUser()">สร้างบัญชีฟรี </button>
+      <div class="auth-status" id="registerPopupStatus"></div>
+      <div class="auth-switch-link">
+        มีบัญชีอยู่แล้ว? <button onclick="switchAuthTab('login')">เข้าสู่ระบบ</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===== END AUTH MODAL ===== -->
+
   <div class="topbar">
-    <span>ผู้สนใจสมัครเข้าศึกษา</span>
-    <span>นักศึกษาปัจจุบัน</span>
-    <span>ครูแนะแนว/ผู้ปกครอง</span>
-    <span>บุคลากร</span>
+    
   </div>
 
   <header>
@@ -818,7 +1815,7 @@ nav button[onclick="logoutUser()"] {
  <button class="menu-toggle" id="menuToggle">
 ☰
 </button>
-      <nav id="mainMenu" class="hide-before-login">
+      <nav id="mainMenu">
 
         <button class="active" data-page="home">Home</button>
         <button data-page="curriculumPage">Curriculum</button>
@@ -829,7 +1826,6 @@ nav button[onclick="logoutUser()"] {
         <button data-page="marketplace">Courses</button>
         <button data-page="tutors">Tutors</button>
         <button data-page="jobs">Jobs</button>
-        <button data-page="checkout">Checkout</button>
         <button data-page="teacher">Teacher</button>
         <button data-page="premium">Premium</button>
        <span id="premiumBadge" class="badge" style="display:none;">
@@ -838,6 +1834,18 @@ nav button[onclick="logoutUser()"] {
  <button onclick="logoutUser()">
 Logout
 </button>
+<button id="loginNavBtn" onclick="openAuthModal('login')" style="background:linear-gradient(135deg,#1dbea0,#0f766e);color:#fff;border:none;">
+เข้าสู่ระบบ
+</button>
+
+<span id="proMenu">
+  <button class="pro-tab" data-page="resumeAnalyzer">📄 Resume AI</button>
+  <button class="pro-tab" data-page="mockInterview">🎤 Mock Interview</button>
+  <button class="pro-tab" data-page="careerRoadmap">🗺️ Roadmap</button>
+  <button class="pro-tab" data-page="proReport">📊 Pro Report</button>
+  <button class="pro-tab" data-page="certificate">🏆 Certificate</button>
+  <button class="pro-tab" data-page="prioritySupport">💬 Support</button>
+</span>
 <button id="cancelPremiumBtn"
         onclick="cancelPremium()"
         style="display:none;
@@ -852,6 +1860,13 @@ Logout
 </button>
 
 </nav>
+<button id="cartIconBtn" onclick="go('checkout')" class="cart-icon-btn" style="display:none;" title="ตะกร้าสินค้า">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+  </svg>
+  <span id="cartCountBadge" class="cart-count-badge">0</span>
+</button>
 </div>
   </header>
 <section id="home" style="padding:0;">
@@ -1013,6 +2028,10 @@ Logout
     <h1>Course Marketplace</h1>
     <p>คอร์สเสียค่าใช้จ่ายที่ระบบแนะนำตามทักษะที่ผู้ใช้ขาด</p><br>
     <div id="courseBanner" class="card"></div>
+    <div id="freeTierNotice" class="free-tier-notice">
+      <span>🆓 สถานะ: <b>Free</b> — กดได้ 4 คอร์สแรก</span>
+      <button class="btn btn-premium-cta" onclick="go('premium')">🚀 อัปเกรด Premium</button>
+    </div>
     <div class="grid" id="courseList"></div>
   </section>
 
@@ -1148,6 +2167,188 @@ Logout
 
 
 </section>
+
+<!-- ==================== PREMIUM PRO SECTIONS ==================== -->
+
+<!-- 1. Resume Analyzer AI -->
+<section id="resumeAnalyzer" class="page">
+  <div class="pro-section-header">
+    <div class="pro-badge-icon">📄</div>
+    <div>
+      <h1>Resume Analyzer AI</h1>
+      <p>อัปโหลด Resume ให้ AI วิเคราะห์จุดแข็ง/จุดอ่อน และแนะนำการปรับปรุง</p>
+    </div>
+  </div>
+  <div id="resumeContent">
+    <div class="grid">
+      <div class="white-card">
+        <h2>อัปโหลด Resume ของคุณ</h2>
+        <div class="resume-dropzone" onclick="simulateResumeUpload()">
+          <div style="font-size:48px;margin-bottom:12px;">📁</div>
+          <p style="color:#1dbea0;font-weight:700;font-size:16px;">คลิกเพื่ออัปโหลดไฟล์ Resume</p>
+          <p style="color:#888;font-size:13px;">รองรับ PDF, DOCX (จำลองการทำงาน)</p>
+        </div>
+        <div id="resumeResult" style="display:none;" class="resume-result-card">
+          <h3 style="color:#271f66;margin-bottom:16px;">📊 ผลการวิเคราะห์ Resume</h3>
+          <div style="margin-bottom:20px;">
+            <div style="font-size:36px;font-weight:700;color:#1dbea0;text-align:center;">72<span style="font-size:18px;">/100</span></div>
+            <p style="text-align:center;color:#888;font-size:13px;margin:4px 0 0;">Resume Score</p>
+          </div>
+          <div class="skill-bar-wrap"><div class="skill-bar-label"><span>ความครบถ้วนของข้อมูล</span><span>85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Keyword ที่ตลาดต้องการ</span><span>70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-label"><span>การนำเสนอผลงาน</span><span>60%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-label"><span>ทักษะเทคนิค</span><span>75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+          <hr style="margin:20px 0;border:0;border-top:1px solid #eee;">
+          <h4 style="color:#e74c3c;margin-bottom:8px;">⚠️ จุดที่ควรปรับปรุง</h4>
+          <ul style="color:#555;font-size:14px;line-height:1.8;padding-left:20px;">
+            <li>เพิ่ม Keyword เช่น "Python", "Power BI", "Prompt Engineering"</li>
+            <li>ระบุผลลัพธ์เป็นตัวเลข เช่น "เพิ่มยอดขาย 30%"</li>
+            <li>เพิ่มหัวข้อ Projects / Portfolio</li>
+          </ul>
+          <h4 style="color:#27ae60;margin:16px 0 8px;">✅ จุดแข็ง</h4>
+          <ul style="color:#555;font-size:14px;line-height:1.8;padding-left:20px;">
+            <li>โครงสร้างเรียบง่าย อ่านง่าย</li>
+            <li>มีข้อมูลการศึกษาครบถ้วน</li>
+            <li>ระบุทักษะซอฟต์แวร์ไว้แล้ว</li>
+          </ul>
+        </div>
+      </div>
+      <div class="white-card">
+        <h2>💡 Tips จาก AI</h2>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="background:#f0fdf4;border-radius:12px;padding:14px;border-left:4px solid #22c55e;">
+            <p style="font-size:14px;font-weight:700;color:#15803d;margin:0 0 4px;">สายงาน Data Analyst</p>
+            <p style="font-size:13px;color:#555;margin:0;">ควรมี Keyword: SQL, Python, Power BI, Excel, Data Visualization</p>
+          </div>
+          <div style="background:#fef3c7;border-radius:12px;padding:14px;border-left:4px solid #f59e0b;">
+            <p style="font-size:14px;font-weight:700;color:#92400e;margin:0 0 4px;">สายงาน AI / Prompt Engineer</p>
+            <p style="font-size:13px;color:#555;margin:0;">ควรมี: ChatGPT, Claude, Midjourney, LangChain, Prompt Design</p>
+          </div>
+          <div style="background:#eff6ff;border-radius:12px;padding:14px;border-left:4px solid #3b82f6;">
+            <p style="font-size:14px;font-weight:700;color:#1d4ed8;margin:0 0 4px;">สายงาน Digital Marketing</p>
+            <p style="font-size:13px;color:#555;margin:0;">ควรมี: Google Ads, Meta Ads, SEO, Analytics, Content Strategy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Mock Interview AI -->
+<section id="mockInterview" class="page">
+  <div class="pro-section-header">
+    <div class="pro-badge-icon">🎤</div>
+    <div>
+      <h1>Mock Interview AI</h1>
+      <p>ฝึกสัมภาษณ์กับ AI ตามสายงานที่สนใจ พร้อม Feedback ทันที</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="white-card" style="grid-column:1/-1;">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+        <label style="font-weight:700;color:#271f66;">เลือกสายงาน:</label>
+        <select id="interviewJobSelect" onchange="startInterview()" style="padding:10px 16px;border-radius:10px;border:1.5px solid #d1d5db;font-size:14px;">
+          <option value="data">Data Analyst</option>
+          <option value="ai">AI / Prompt Engineer</option>
+          <option value="ux">UX/UI Designer</option>
+          <option value="mkt">Digital Marketing</option>
+          <option value="hr">HR Tech</option>
+        </select>
+        <button onclick="startInterview()" style="padding:10px 20px;border-radius:10px;border:none;background:#271f66;color:#fff;font-weight:700;cursor:pointer;">🔄 เริ่มใหม่</button>
+      </div>
+      <div id="interviewChat" class="interview-chat">
+        <div class="chat-bubble-ai" id="aiFirstQ">กด "เริ่มใหม่" เพื่อเริ่มการสัมภาษณ์</div>
+      </div>
+      <div class="interview-input-row">
+        <input id="interviewAnswer" type="text" placeholder="พิมพ์คำตอบของคุณ แล้วกด Enter..." onkeydown="if(event.key==='Enter')submitAnswer()">
+        <button onclick="submitAnswer()">ส่ง →</button>
+      </div>
+      <div id="interviewFeedback" style="display:none;margin-top:16px;background:#f0fdf4;border-radius:12px;padding:16px;border-left:4px solid #22c55e;">
+        <p style="font-weight:700;color:#15803d;margin:0 0 4px;">💡 Feedback จาก AI</p>
+        <p id="feedbackText" style="font-size:14px;color:#555;margin:0;line-height:1.6;"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Career Roadmap -->
+<section id="careerRoadmap" class="page">
+  <div class="pro-section-header">
+    <div class="pro-badge-icon">🗺️</div>
+    <div>
+      <h1>Career Roadmap</h1>
+      <p>แผนพัฒนาอาชีพส่วนตัว สร้างจากผล Skill Gap Assessment ของคุณ</p>
+    </div>
+  </div>
+  <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;align-items:center;">
+    <label style="font-weight:700;color:#271f66;">เลือกอาชีพเป้าหมาย:</label>
+    <select id="roadmapCareerSelect" onchange="renderRoadmap()" style="padding:10px 16px;border-radius:10px;border:1.5px solid #d1d5db;font-size:14px;">
+      <option value="data">Data Analyst</option>
+      <option value="ai">AI / Prompt Engineer</option>
+      <option value="ux">UX/UI Designer</option>
+      <option value="mkt">Digital Marketing</option>
+      <option value="hr">HR Tech Assistant</option>
+    </select>
+    <select id="roadmapDuration" onchange="renderRoadmap()" style="padding:10px 16px;border-radius:10px;border:1.5px solid #d1d5db;font-size:14px;">
+      <option value="6">6 เดือน</option>
+      <option value="12">12 เดือน</option>
+    </select>
+  </div>
+  <div id="roadmapContainer" class="roadmap-timeline"></div>
+</section>
+
+<!-- 4. Pro Career Report -->
+<section id="proReport" class="page">
+  <div class="pro-section-header">
+    <div class="pro-badge-icon">📊</div>
+    <div>
+      <h1>Premium Career Report</h1>
+      <p>รายงานฉบับสมบูรณ์ พร้อมกราฟ Skill Gap + เงินเดือนคาดหวัง + แผนพัฒนา</p>
+    </div>
+  </div>
+  <div id="proReportContent"></div>
+</section>
+
+<!-- 5. AI Readiness Certificate -->
+<section id="certificate" class="page">
+  <div class="pro-section-header">
+    <div class="pro-badge-icon">🏆</div>
+    <div>
+      <h1>AI Readiness Certificate</h1>
+      <p>ใบประกาศนียบัตรดิจิทัล แสดงคะแนน AI Readiness Score ของคุณ</p>
+    </div>
+  </div>
+  <div id="certContainer"></div>
+</section>
+
+<!-- 6. Priority Support -->
+<section id="prioritySupport" class="page">
+  <div class="pro-section-header">
+    <div class="pro-badge-icon">💬</div>
+    <div>
+      <h1>Priority Support</h1>
+      <p>แชทกับทีมผู้เชี่ยวชาญ ตอบภายใน 24 ชั่วโมง</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="white-card">
+      <h2>📩 ส่งคำถามใหม่</h2>
+      <input id="supportSubject" type="text" placeholder="หัวข้อคำถาม" style="width:100%;padding:12px;border-radius:10px;border:1.5px solid #d1d5db;font-size:14px;margin-bottom:10px;box-sizing:border-box;"><br>
+      <textarea id="supportMsg" rows="4" placeholder="รายละเอียด..." style="width:100%;padding:12px;border-radius:10px;border:1.5px solid #d1d5db;font-size:14px;resize:vertical;box-sizing:border-box;"></textarea><br>
+      <button onclick="submitSupport()" class="btn" style="margin-top:12px;">ส่งคำถาม</button>
+    </div>
+    <div class="white-card">
+      <h2>📋 ประวัติคำถาม</h2>
+      <div id="supportList">
+        <div class="support-msg"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span class="support-tag tag-closed">ตอบแล้ว</span><h4 style="margin:0;">วิธีใช้ Prompt Engineering เบื้องต้น</h4></div><p>AI ตอบได้เลยโดยไม่ต้องรอ — ลองดู Mock Interview</p></div>
+        <div class="support-msg"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span class="support-tag tag-open">รอตอบ</span><h4 style="margin:0;">คอร์ส Python ไหนเหมาะกับ Beginner?</h4></div><p>ทีมงานจะตอบภายใน 24 ชั่วโมง</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== END PREMIUM PRO SECTIONS ==================== -->
+
   <footer>
     <h3 style="color:white;">DIGITECH FutureReady AI</h3>
     <p>AI-Ready Digital Curriculum Platform • Prototype for Research Presentation</p>
@@ -1158,261 +2359,83 @@ Logout
   'use strict';
 
   const skills = [
-    
     { key: 'ai', group: 'AI Skills', label: 'AI Tools', market: 90, q: 'คุณสามารถใช้ AI Tools ในระดับใด' },
     { key: 'prompt', group: 'AI Skills', label: 'Prompt Engineering', market: 88, q: 'คุณเขียน Prompt เพื่อช่วยวิเคราะห์หรือสร้างงานได้แค่ไหน' },
     { key: 'data', group: 'Digital Skills', label: 'Data Skills', market: 82, q: 'คุณวิเคราะห์ข้อมูลหรือทำ Dashboard ได้หรือไม่' },
     { key: 'sql', group: 'Digital Skills', label: 'SQL', market: 75, q: 'คุณใช้ SQL หรือจัดการข้อมูลได้ระดับใด' },
     { key: 'human', group: 'Human Skills', label: 'Communication', market: 85, q: 'คุณสื่อสาร ทำงานเป็นทีม และแก้ปัญหาได้ดีแค่ไหน' },
     { key: 'career', group: 'Career Skills', label: 'Portfolio', market: 78, q: 'คุณมี Portfolio หรือผลงานที่ใช้สมัครงานได้หรือไม่' }
-  ];const careerQuestionBank = {
-  "Data Analyst": [
-    { key:"da_q1", group:"Data Analyst", label:"Data Cleaning", market:88, q:"ข้อมูลยอดขายมีค่าว่างและข้อมูลซ้ำ ควรทำอย่างไร?", options:[
-      { text:"นำไปทำกราฟทันที", score:25, lack:"Data Cleaning", improve:"Data Preparation", reason:"เพราะข้อมูลสกปรกทำให้ผลวิเคราะห์ผิดพลาด" },
-      { text:"ตรวจ Missing Value, Duplicate และทำความสะอาดข้อมูลก่อน", score:90, strength:"Data Quality Control", reason:"เพราะงานวิเคราะห์ที่ดีต้องเริ่มจากข้อมูลที่ถูกต้อง" },
-      { text:"ลบข้อมูลทั้งหมดแล้วเริ่มใหม่", score:20, lack:"Problem Solving", improve:"Data Handling", reason:"เพราะควรแก้ปัญหาเป็นระบบ ไม่ลบข้อมูลทิ้งทันที" },
-      { text:"เดาสุ่มค่าแทนข้อมูลที่หาย", score:30, lack:"Data Ethics", improve:"Data Validation", reason:"เพราะการเดาข้อมูลทำให้ Insight ไม่น่าเชื่อถือ" }
-    ]},
-    { key:"da_q2", group:"Data Analyst", label:"SQL Analysis", market:86, q:"หัวหน้าขอรายงานยอดขายแยกตามจังหวัดจากฐานข้อมูล คุณควรทำอย่างไร?", options:[
-      { text:"คัดลอกข้อมูลทุกแถวไปทำเองใน Excel", score:35, lack:"Query Efficiency", improve:"SQL Aggregation", reason:"เพราะข้อมูลจำนวนมากควรสรุปด้วย Query" },
-      { text:"ใช้ SELECT, GROUP BY และ SUM เพื่อสรุปยอดขาย", score:90, strength:"SQL Aggregation", reason:"เพราะเป็นวิธีตรงกับงาน Data Analyst จริง" },
-      { text:"ขอให้คนอื่นทำแทน", score:20, lack:"Independence", improve:"SQL Practice", reason:"เพราะควรฝึกใช้เครื่องมือพื้นฐานของสายงาน" },
-      { text:"ดูแค่จังหวัดแรกแล้วสรุปทั้งหมด", score:15, lack:"Analytical Accuracy", improve:"Data Completeness", reason:"เพราะการสรุปจากข้อมูลไม่ครบทำให้ตัดสินใจผิด" }
-    ]},
-    { key:"da_q3", group:"Data Analyst", label:"Dashboard Insight", market:84, q:"Dashboard มีกราฟเยอะ แต่ผู้บริหารไม่เข้าใจ Insight ควรปรับอย่างไร?", options:[
-      { text:"เพิ่มกราฟให้เยอะขึ้น", score:25, lack:"Data Storytelling", improve:"Executive Dashboard Design", reason:"เพราะจำนวนกราฟมากไม่ได้แปลว่าสื่อสารดี" },
-      { text:"เลือก KPI สำคัญ สรุป Insight และ Action ชัดเจน", score:92, strength:"Business Insight Communication", reason:"เพราะผู้บริหารต้องการข้อมูลเพื่อการตัดสินใจ" },
-      { text:"ใส่สีสดทุกกราฟให้ดูน่าสนใจ", score:35, lack:"Visual Hierarchy", improve:"Dashboard UX", reason:"เพราะสีช่วยได้แต่ไม่แทนการวิเคราะห์" },
-      { text:"ส่งไฟล์ดิบให้ผู้บริหารดูเอง", score:15, lack:"Communication", improve:"Data Storytelling", reason:"เพราะหน้าที่ Analyst คือแปลงข้อมูลเป็นความหมาย" }
-    ]},
-    { key:"da_q4", group:"Data Analyst", label:"Business Question", market:82, q:"ยอดขายลดลง 20% คุณควรเริ่มวิเคราะห์จากอะไร?", options:[
-      { text:"สรุปทันทีว่าเพราะเศรษฐกิจไม่ดี", score:25, lack:"Root Cause Analysis", improve:"Hypothesis Testing", reason:"เพราะยังไม่มีหลักฐานรองรับ" },
-      { text:"แยกดูตามเวลา สินค้า ช่องทาง และกลุ่มลูกค้า", score:90, strength:"Root Cause Analysis", reason:"เพราะช่วยหาสาเหตุที่แท้จริงจากหลายมิติ" },
-      { text:"ลบข้อมูลเดือนที่ยอดขายตกออก", score:10, lack:"Data Ethics", improve:"Analytical Integrity", reason:"เพราะเป็นการบิดเบือนข้อมูล" },
-      { text:"ดูกราฟเส้นอย่างเดียว", score:40, lack:"Multi-dimensional Analysis", improve:"Segmentation", reason:"เพราะต้องเจาะลึกมากกว่าดูแนวโน้มรวม" }
-    ]}
-  ],
-
-  "UX/UI Designer": [
-    { key:"ux_q1", group:"UX/UI Designer", label:"User Research", market:85, q:"ออกแบบแอปแล้วผู้ใช้บอกว่าใช้งานยาก ควรทำอย่างไร?", options:[
-      { text:"บอกว่าผู้ใช้ไม่เข้าใจเอง", score:20, lack:"User Empathy", improve:"UX Mindset", reason:"เพราะ UX ต้องเริ่มจากความเข้าใจผู้ใช้" },
-      { text:"สัมภาษณ์ผู้ใช้ ทดสอบ Usability แล้วปรับ Flow", score:90, strength:"User-Centered Design", reason:"เพราะใช้ข้อมูลผู้ใช้จริงมาปรับปรุงงาน" },
-      { text:"เปลี่ยนสีให้สวยขึ้นอย่างเดียว", score:35, lack:"UX Research", improve:"Usability Testing", reason:"เพราะปัญหาใช้งานยากไม่ได้แก้ด้วยสีอย่างเดียว" },
-      { text:"ลอกดีไซน์แอปดังมาใช้", score:25, lack:"Design Reasoning", improve:"UX Principles", reason:"เพราะบริบทผู้ใช้แต่ละระบบไม่เหมือนกัน" }
-    ]},
-    { key:"ux_q2", group:"UX/UI Designer", label:"Information Architecture", market:82, q:"เมนูในเว็บมีเยอะจนผู้ใช้หาหน้าไม่เจอ ควรทำอย่างไร?", options:[
-      { text:"เพิ่มเมนูเข้าไปอีกเพื่อให้ครบ", score:20, lack:"Information Architecture", improve:"Menu Prioritization", reason:"เพราะเมนูเยอะทำให้ Cognitive Load สูง" },
-      { text:"จัดกลุ่มเมนู ลดสิ่งไม่จำเป็น และทดสอบกับผู้ใช้", score:90, strength:"Navigation Design", reason:"เพราะช่วยให้ผู้ใช้ตัดสินใจง่ายขึ้น" },
-      { text:"ทำปุ่มทุกปุ่มให้สีเดียวกัน", score:35, lack:"Interaction Design", improve:"Visual Hierarchy", reason:"เพราะยังไม่ได้แก้โครงสร้างข้อมูล" },
-      { text:"ซ่อนเมนูทั้งหมดไว้", score:30, lack:"Accessibility", improve:"Discoverability", reason:"เพราะผู้ใช้อาจหาเมนูสำคัญไม่เจอ" }
-    ]},
-    { key:"ux_q3", group:"UX/UI Designer", label:"Prototype", market:84, q:"ก่อนส่งให้นักพัฒนาทำเว็บจริง ควรเตรียมอะไร?", options:[
-      { text:"ส่งรูปหน้าจออย่างเดียว", score:35, lack:"Handoff Skill", improve:"Design Specification", reason:"เพราะทีม Dev ต้องการรายละเอียด Interaction" },
-      { text:"ทำ Prototype, Design System และระบุ spacing/color/component", score:92, strength:"Design Handoff", reason:"เพราะช่วยให้พัฒนาได้ตรงตามแบบ" },
-      { text:"อธิบายปากเปล่า", score:25, lack:"Documentation", improve:"UX Documentation", reason:"เพราะอาจเกิดความเข้าใจไม่ตรงกัน" },
-      { text:"ให้ Dev เดาเอง", score:10, lack:"Team Collaboration", improve:"Handoff Communication", reason:"เพราะเสี่ยงทำงานผิดและเสียเวลาแก้" }
-    ]},
-    { key:"ux_q4", group:"UX/UI Designer", label:"Accessibility", market:80, q:"ปุ่มสีเขียวบนพื้นหลังฟ้าอ่านยาก ควรทำอย่างไร?", options:[
-      { text:"ปล่อยไว้เพราะดูสวย", score:25, lack:"Accessibility Awareness", improve:"Color Contrast", reason:"เพราะผู้ใช้บางกลุ่มอาจอ่านไม่ได้" },
-      { text:"ตรวจ Contrast และปรับสี/ขนาดตัวอักษรให้ชัด", score:90, strength:"Accessible UI Design", reason:"เพราะช่วยให้ผู้ใช้เข้าถึงได้มากขึ้น" },
-      { text:"ลดขนาดปุ่มให้เล็กลง", score:20, lack:"Usability", improve:"Tap Target Design", reason:"เพราะทำให้กดยากขึ้นโดยเฉพาะมือถือ" },
-      { text:"ใช้สีสุ่มทุกหน้า", score:15, lack:"Design Consistency", improve:"Design System", reason:"เพราะทำให้ประสบการณ์ใช้งานไม่ต่อเนื่อง" }
-    ]}
-  ],
-
-  "AI Content Creator": [
-    { key:"aic_q1", group:"AI Content Creator", label:"Quality Control", market:85, q:"เจนภาพด้วย AI แล้วนิ้วเกิน ลายผ้าเบี้ยว ควรทำอย่างไร?", options:[
-      { text:"โพสต์ทันที คิดว่าคนดูไม่สังเกต", score:25, lack:"Quality Control", improve:"Brand Image Management", reason:"เพราะคอนเทนต์ผิดพลาดทำให้แบรนด์เสียความน่าเชื่อถือ" },
-      { text:"ใช้ Inpainting หรือ Photoshop รีทัชก่อนโพสต์", score:90, strength:"Hybrid AI-Human Editing", reason:"เพราะใช้ AI ร่วมกับทักษะมนุษย์เพื่อควบคุมคุณภาพ" },
-      { text:"ด่า AI ให้มันสำนึกผิด", score:10, lack:"Tool Understanding", improve:"Generative AI Mechanics", reason:"เพราะต้องเข้าใจข้อจำกัดของเครื่องมือ" },
-      { text:"ลบรูปทิ้ง ไม่ใช้ภาพ AI อีก", score:35, lack:"Persistence", improve:"AI Image Retouching", reason:"เพราะควรฝึกแก้ไขแทนการเลี่ยงเครื่องมือ" }
-    ]},
-    { key:"aic_q2", group:"AI Content Creator", label:"Copyright & Ethics", market:90, q:"ให้ ChatGPT สรุปข่าวมาลงเพจ ควรคำนึงถึงอะไรที่สุด?", options:[
-      { text:"Copy ทั้งหมดมาโพสต์เลย", score:20, lack:"Ethical Standards", improve:"Copyright Law", reason:"เพราะเสี่ยงละเมิดลิขสิทธิ์และทำลายความน่าเชื่อถือ" },
-      { text:"Rewrite ตรวจความถูกต้อง และให้เครดิตแหล่งที่มา", score:95, strength:"Content Integrity & Ethics", reason:"เพราะเป็นการใช้ AI อย่างรับผิดชอบ" },
-      { text:"ใส่ข้อมูลเท็จเพิ่มเพื่อเรียกยอดไลก์", score:5, lack:"Responsible Journalism", improve:"Content Ethics", reason:"เพราะข้อมูลเท็จสร้างผลเสียต่อผู้อ่าน" },
-      { text:"ไม่ให้เครดิต เพราะ AI เขียนให้แล้ว", score:25, lack:"Fair Use Awareness", improve:"Digital Law", reason:"เพราะ AI ไม่ได้ทำให้สิทธิ์ของแหล่งข้อมูลหายไป" }
-    ]},
-    { key:"aic_q3", group:"AI Content Creator", label:"Content Strategy", market:85, q:"โพสต์รูป AI วันละ 10 รูป แต่ยอดแชร์ลดลง ควรทำอย่างไร?", options:[
-      { text:"เพิ่มเป็นวันละ 50 รูป", score:20, lack:"Content Strategy", improve:"Value-Driven Content", reason:"เพราะปริมาณมากไม่ได้แปลว่ามีคุณค่า" },
-      { text:"สร้างคอนเทนต์แก้ปัญหาให้คนอ่าน และชวนคุย", score:90, strength:"Community Engagement", reason:"เพราะ Engagement เกิดจากคุณค่าและการมีส่วนร่วม" },
-      { text:"ซื้อยอดไลก์ปลอม", score:10, lack:"Marketing Ethics", improve:"Digital Transparency", reason:"เพราะตัวเลขปลอมไม่สร้างผู้ติดตามจริง" },
-      { text:"ปิดเพจหนี", score:25, lack:"Resilience", improve:"Growth Mindset", reason:"เพราะควรทดลองและปรับกลยุทธ์" }
-    ]},
-    { key:"aic_q4", group:"AI Content Creator", label:"Short-form Content", market:82, q:"แพลตฟอร์มเน้นวิดีโอสั้น แต่คุณถนัดบทความยาว ควรทำอย่างไร?", options:[
-      { text:"ใช้ AI สรุปบทความเป็นสคริปต์คลิปสั้น", score:90, strength:"Content Repurposing", reason:"เพราะปรับเนื้อหาให้เข้ากับแพลตฟอร์มได้" },
-      { text:"เขียนยาวต่อไป แล้วโทษว่าวิดีโอสั้นไร้สาระ", score:25, lack:"Adaptability", improve:"Trend Forecasting", reason:"เพราะครีเอเตอร์ต้องปรับตัวตามพฤติกรรมผู้ชม" },
-      { text:"เอาบทความยาวไปอ่าน 30 นาทีลง TikTok", score:35, lack:"Platform Fit", improve:"Content Customization", reason:"เพราะรูปแบบไม่เหมาะกับพฤติกรรมผู้ชม" },
-      { text:"จ้างคนอื่นทำ ไม่เรียนรู้ AI", score:30, lack:"Technical Upskilling", improve:"AI Video Tools", reason:"เพราะควรเข้าใจเครื่องมือที่เกี่ยวกับงานของตน" }
-    ]}
-  ],
-
-  "Digital Marketing": [
-    { key:"dm_q1", group:"Digital Marketing", label:"Campaign Analytics", market:86, q:"ยิงแอดแล้วมีคนกดเยอะ แต่ไม่มีคนซื้อ ควรดูอะไร?", options:[
-      { text:"เพิ่มงบแอดทันที", score:25, lack:"Funnel Analysis", improve:"Conversion Optimization", reason:"เพราะ Click สูงไม่ได้แปลว่ายอดขายดี" },
-      { text:"วิเคราะห์ CTR, Landing Page, Conversion และกลุ่มเป้าหมาย", score:92, strength:"Performance Marketing Analysis", reason:"เพราะต้องหาคอขวดของ Funnel" },
-      { text:"เปลี่ยนสีปุ่มอย่างเดียว", score:35, lack:"Experiment Design", improve:"A/B Testing", reason:"เพราะควรทดสอบอย่างมีสมมติฐาน" },
-      { text:"ซื้อยอดไลก์เพิ่ม", score:10, lack:"Marketing Ethics", improve:"Organic Growth", reason:"เพราะยอดปลอมไม่เพิ่มรายได้จริง" }
-    ]},
-    { key:"dm_q2", group:"Digital Marketing", label:"SEO", market:82, q:"บทความติดอันดับต่ำใน Google ควรเริ่มปรับอย่างไร?", options:[
-      { text:"ใส่ Keyword ซ้ำ ๆ เยอะที่สุด", score:25, lack:"SEO Quality", improve:"Search Intent", reason:"เพราะ Keyword Stuffing ทำให้คุณภาพแย่" },
-      { text:"วิเคราะห์ Search Intent ปรับหัวข้อ โครงสร้าง และคุณภาพเนื้อหา", score:90, strength:"SEO Content Strategy", reason:"เพราะ SEO ต้องตอบคำถามผู้ค้นหา" },
-      { text:"คัดลอกบทความคู่แข่ง", score:10, lack:"Content Ethics", improve:"Original Content", reason:"เพราะเสี่ยงลิขสิทธิ์และไม่สร้างคุณค่า" },
-      { text:"ลบเว็บแล้วสร้างใหม่", score:20, lack:"Problem Solving", improve:"SEO Audit", reason:"เพราะควรตรวจปัญหาเดิมก่อน" }
-    ]},
-    { key:"dm_q3", group:"Digital Marketing", label:"Audience Targeting", market:84, q:"โฆษณาเข้าถึงคนเยอะ แต่ไม่ตรงกลุ่ม ควรทำอย่างไร?", options:[
-      { text:"ยิงให้กว้างขึ้นอีก", score:25, lack:"Audience Segmentation", improve:"Target Persona", reason:"เพราะยิ่งกว้างอาจยิ่งเสียเงินโดยไม่คุ้ม" },
-      { text:"สร้าง Persona และแบ่งกลุ่มเป้าหมายตามพฤติกรรม", score:90, strength:"Audience Segmentation", reason:"เพราะช่วยสื่อสารตรงความต้องการ" },
-      { text:"ใช้ข้อความเดียวกับทุกกลุ่ม", score:35, lack:"Personalization", improve:"Message Matching", reason:"เพราะแต่ละกลุ่มต้องการเหตุผลต่างกัน" },
-      { text:"หยุดทำการตลาดออนไลน์ทั้งหมด", score:20, lack:"Resilience", improve:"Campaign Optimization", reason:"เพราะควรปรับแคมเปญจากข้อมูล" }
-    ]},
-    { key:"dm_q4", group:"Digital Marketing", label:"Marketing Ethics", market:80, q:"ลูกค้าอยากให้ทำโฆษณาเกินจริงเพื่อยอดขาย ควรทำอย่างไร?", options:[
-      { text:"ทำทันทีเพราะลูกค้าจ่ายเงิน", score:15, lack:"Ethical Marketing", improve:"Truthful Advertising", reason:"เพราะโฆษณาเกินจริงทำลายความเชื่อมั่น" },
-      { text:"เสนอข้อความที่ขายได้แต่ไม่หลอกลวง", score:90, strength:"Responsible Marketing", reason:"เพราะรักษาทั้งยอดขายและความน่าเชื่อถือ" },
-      { text:"ใช้รีวิวปลอม", score:5, lack:"Trust Management", improve:"Marketing Ethics", reason:"เพราะผิดจริยธรรมและเสี่ยงกฎหมาย" },
-      { text:"ไม่สื่อสารกับลูกค้า", score:25, lack:"Client Communication", improve:"Professional Negotiation", reason:"เพราะควรอธิบายทางเลือกที่เหมาะสม" }
-    ]}
-  ],
-
-  "Prompt Engineer": [
-    { key:"pe_q1", group:"Prompt Engineer", label:"Prompt Clarity", market:88, q:"AI ตอบไม่ตรงโจทย์หลายครั้ง ควรแก้ Prompt อย่างไร?", options:[
-      { text:"พิมพ์คำถามเดิมซ้ำ ๆ", score:25, lack:"Prompt Clarity", improve:"Instruction Design", reason:"เพราะต้องปรับบริบทและเงื่อนไขให้ชัด" },
-      { text:"กำหนดบทบาท เป้าหมาย ข้อมูลนำเข้า รูปแบบคำตอบ และข้อจำกัด", score:92, strength:"Structured Prompting", reason:"เพราะช่วยให้ AI เข้าใจงานครบถ้วน" },
-      { text:"ด่า AI ว่าโง่", score:5, lack:"Tool Understanding", improve:"AI Interaction", reason:"เพราะไม่ช่วยให้ผลลัพธ์ดีขึ้น" },
-      { text:"ใช้ Prompt ยาวมากโดยไม่มีโครงสร้าง", score:35, lack:"Prompt Organization", improve:"Prompt Framework", reason:"เพราะความยาวไม่เท่ากับความชัดเจน" }
-    ]},
-    { key:"pe_q2", group:"Prompt Engineer", label:"Evaluation", market:84, q:"จะรู้ได้อย่างไรว่า Prompt ที่เขียนดีจริง?", options:[
-      { text:"ดูจากความรู้สึกอย่างเดียว", score:25, lack:"Evaluation Method", improve:"Prompt Testing", reason:"เพราะควรวัดผลด้วยเกณฑ์" },
-      { text:"ทดสอบหลายเคส เทียบ Accuracy และปรับ Prompt จากผลลัพธ์", score:90, strength:"Prompt Evaluation", reason:"เพราะทำให้ Prompt ใช้งานจริงได้เสถียร" },
-      { text:"ใช้คำสวย ๆ เยอะ ๆ", score:30, lack:"Output Control", improve:"Evaluation Criteria", reason:"เพราะคำสวยไม่ได้รับประกันความถูกต้อง" },
-      { text:"เปลี่ยนโมเดลทุกครั้งโดยไม่วัดผล", score:35, lack:"Experiment Control", improve:"A/B Testing", reason:"เพราะต้องควบคุมตัวแปรเพื่อเปรียบเทียบ" }
-    ]},
-    { key:"pe_q3", group:"Prompt Engineer", label:"Hallucination Control", market:86, q:"AI ให้ข้อมูลที่ดูน่าเชื่อถือแต่ไม่แน่ใจว่าจริง ควรทำอย่างไร?", options:[
-      { text:"เชื่อเลย เพราะ AI เขียนดี", score:15, lack:"Fact Checking", improve:"Source Verification", reason:"เพราะ AI อาจสร้างข้อมูลผิดได้" },
-      { text:"สั่งให้ AI อ้างอิงแหล่งข้อมูล และตรวจสอบกับแหล่งจริง", score:92, strength:"Hallucination Control", reason:"เพราะลดความเสี่ยงข้อมูลผิด" },
-      { text:"ลบส่วนที่ไม่แน่ใจทั้งหมด", score:35, lack:"Content Verification", improve:"Research Workflow", reason:"เพราะควรตรวจมากกว่าลบทิ้ง" },
-      { text:"ใช้คำว่า น่าจะ เพื่อเลี่ยงความรับผิดชอบ", score:20, lack:"Professional Responsibility", improve:"Accuracy Standards", reason:"เพราะงานจริงต้องชัดเจนและรับผิดชอบ" }
-    ]},
-    { key:"pe_q4", group:"Prompt Engineer", label:"Workflow Design", market:82, q:"ต้องสร้างระบบให้ AI ช่วยสรุปเอกสารหลายประเภท ควรออกแบบอย่างไร?", options:[
-      { text:"ใช้ Prompt เดียวกับทุกเอกสาร", score:30, lack:"Workflow Design", improve:"Prompt Templates", reason:"เพราะเอกสารแต่ละแบบต้องการวิธีอ่านต่างกัน" },
-      { text:"แยกประเภทเอกสาร สร้าง Template และกำหนด Output Schema", score:90, strength:"AI Workflow Architecture", reason:"เพราะช่วยให้ผลลัพธ์สม่ำเสมอ" },
-      { text:"ให้ AI เดาเองทั้งหมด", score:20, lack:"Control Mechanism", improve:"Output Specification", reason:"เพราะเสี่ยงผลลัพธ์ไม่ตรงงาน" },
-      { text:"ทำด้วยมือทั้งหมด", score:35, lack:"AI Adoption", improve:"Automation Thinking", reason:"เพราะงานซ้ำควรใช้ AI ช่วยเพิ่มประสิทธิภาพ" }
-    ]}
-  ],
-
-  "Power BI Specialist": [
-    { key:"pbi_q1", group:"Power BI Specialist", label:"Data Modeling", market:86, q:"ข้อมูลหลายตารางเชื่อมกันผิด ทำให้ตัวเลขรวมเพี้ยน ควรทำอย่างไร?", options:[
-      { text:"ทำกราฟต่อไปก่อน", score:20, lack:"Data Modeling", improve:"Relationship Design", reason:"เพราะ Model ผิดทำให้ทุกกราฟผิด" },
-      { text:"ตรวจ Relationship, Cardinality และสร้าง Star Schema", score:92, strength:"Power BI Data Modeling", reason:"เพราะ Model ที่ดีคือฐานของ Dashboard" },
-      { text:"รวมทุกตารางเป็นตารางเดียวเสมอ", score:35, lack:"Model Optimization", improve:"Schema Design", reason:"เพราะอาจทำให้ไฟล์หนักและวิเคราะห์ยาก" },
-      { text:"แก้ตัวเลขเองในกราฟ", score:10, lack:"Data Integrity", improve:"DAX Accuracy", reason:"เพราะเป็นการบิดเบือนข้อมูล" }
-    ]},
-    { key:"pbi_q2", group:"Power BI Specialist", label:"DAX", market:84, q:"ต้องคำนวณยอดขายสะสมรายเดือนใน Power BI ควรใช้ทักษะใด?", options:[
-      { text:"กรอกตัวเลขสะสมเอง", score:20, lack:"DAX Skill", improve:"Time Intelligence", reason:"เพราะควรให้ระบบคำนวณอัตโนมัติ" },
-      { text:"ใช้ DAX Measure และ Time Intelligence", score:90, strength:"DAX Calculation", reason:"เพราะเป็นทักษะสำคัญของ Power BI" },
-      { text:"Export ไป Excel ทุกครั้ง", score:35, lack:"BI Workflow", improve:"Power BI Automation", reason:"เพราะลดประโยชน์ของ Dashboard แบบ Interactive" },
-      { text:"ใช้กราฟวงกลมแทน", score:15, lack:"Metric Understanding", improve:"KPI Calculation", reason:"เพราะไม่แก้ปัญหาการคำนวณ" }
-    ]},
-    { key:"pbi_q3", group:"Power BI Specialist", label:"Dashboard UX", market:82, q:"Dashboard ผู้บริหารโหลดช้าและข้อมูลเยอะเกินไป ควรทำอย่างไร?", options:[
-      { text:"ใส่ Visual เพิ่มให้ครบทุกอย่าง", score:25, lack:"Performance Optimization", improve:"Dashboard Prioritization", reason:"เพราะ Visual มากทำให้โหลดช้า" },
-      { text:"ลด Visual ที่ไม่จำเป็น ใช้ KPI สำคัญ และ Optimize Model", score:90, strength:"BI Performance Optimization", reason:"เพราะ Dashboard ต้องเร็วและตอบโจทย์" },
-      { text:"เปลี่ยนสีพื้นหลัง", score:30, lack:"Problem Diagnosis", improve:"Performance Analysis", reason:"เพราะไม่ได้แก้สาเหตุโหลดช้า" },
-      { text:"ให้ผู้บริหารรอนานขึ้น", score:10, lack:"User Empathy", improve:"Executive UX", reason:"เพราะควรออกแบบให้ใช้งานสะดวก" }
-    ]},
-    { key:"pbi_q4", group:"Power BI Specialist", label:"Data Refresh", market:80, q:"ข้อมูล Dashboard ไม่อัปเดตตามเวลาที่ต้องการ ควรตรวจอะไร?", options:[
-      { text:"บอกผู้ใช้ให้กดรีเฟรชเองทุกครั้ง", score:25, lack:"Refresh Management", improve:"Scheduled Refresh", reason:"เพราะควรตั้งระบบอัปเดตอัตโนมัติ" },
-      { text:"ตรวจ Gateway, Data Source Credentials และ Schedule Refresh", score:90, strength:"Power BI Deployment", reason:"เพราะเป็นจุดสำคัญของการใช้งานจริง" },
-      { text:"ทำ Dashboard ใหม่ทั้งหมด", score:25, lack:"Troubleshooting", improve:"Power BI Service", reason:"เพราะควรหาสาเหตุเฉพาะจุดก่อน" },
-      { text:"ใช้รูปภาพแทน Dashboard", score:10, lack:"BI Understanding", improve:"Interactive Reporting", reason:"เพราะเสียความสามารถด้านข้อมูลสด" }
-    ]}
-  ],
-
-  "Python Data Analyst": [
-    { key:"py_q1", group:"Python Data Analyst", label:"Pandas Cleaning", market:86, q:"ไฟล์ CSV มีค่าว่างและชนิดข้อมูลผิด ควรทำอย่างไรด้วย Python?", options:[
-      { text:"วิเคราะห์ทันทีโดยไม่ตรวจ", score:20, lack:"Data Cleaning", improve:"Pandas Data Preparation", reason:"เพราะข้อมูลผิดชนิดทำให้ผลคำนวณผิด" },
-      { text:"ใช้ pandas ตรวจ dtype, missing values และแปลงข้อมูลก่อน", score:92, strength:"Pandas Cleaning", reason:"เพราะเป็นขั้นตอนพื้นฐานของ Python Analyst" },
-      { text:"แก้ทีละช่องด้วยมือทั้งหมด", score:35, lack:"Automation", improve:"Pandas Workflow", reason:"เพราะ Python เหมาะกับงานซ้ำจำนวนมาก" },
-      { text:"ลบคอลัมน์ที่มีปัญหาทุกคอลัมน์", score:25, lack:"Data Judgment", improve:"Missing Value Strategy", reason:"เพราะอาจสูญเสียข้อมูลสำคัญ" }
-    ]},
-    { key:"py_q2", group:"Python Data Analyst", label:"Visualization", market:82, q:"ต้องนำเสนอแนวโน้มยอดขายรายเดือน ควรใช้กราฟแบบใด?", options:[
-      { text:"Pie Chart รายเดือน", score:30, lack:"Chart Selection", improve:"Data Visualization", reason:"เพราะ Pie Chart ไม่เหมาะกับแนวโน้มเวลา" },
-      { text:"Line Chart พร้อมคำอธิบาย Insight", score:90, strength:"Visualization Reasoning", reason:"เพราะเหมาะกับข้อมูลตามเวลา" },
-      { text:"ตารางตัวเลขอย่างเดียว", score:45, lack:"Storytelling", improve:"Visual Communication", reason:"เพราะดูแนวโน้มได้ยาก" },
-      { text:"ใช้กราฟ 3D ให้สวย", score:25, lack:"Visual Clarity", improve:"Chart Simplicity", reason:"เพราะกราฟ 3D มักอ่านยากและบิดเบือน" }
-    ]},
-    { key:"py_q3", group:"Python Data Analyst", label:"Notebook Workflow", market:80, q:"Notebook วิเคราะห์ข้อมูลเริ่มรกและรันซ้ำไม่ได้ ควรทำอย่างไร?", options:[
-      { text:"ปล่อยไว้ ขอแค่ผลลัพธ์ออก", score:25, lack:"Reproducibility", improve:"Notebook Organization", reason:"เพราะงานวิเคราะห์ต้องตรวจซ้ำได้" },
-      { text:"จัดโครงสร้าง Cell แยก Load/Clean/Analyze/Visualize และใส่คำอธิบาย", score:90, strength:"Reproducible Analysis", reason:"เพราะช่วยให้ทีมอ่านและใช้งานต่อได้" },
-      { text:"ลบโค้ดเก่าทั้งหมดโดยไม่สำรอง", score:20, lack:"Version Control", improve:"Code Management", reason:"เพราะเสี่ยงเสียงานและย้อนกลับไม่ได้" },
-      { text:"รวมทุกอย่างไว้ใน Cell เดียว", score:30, lack:"Code Readability", improve:"Modular Thinking", reason:"เพราะแก้ไขและตรวจสอบยาก" }
-    ]},
-    { key:"py_q4", group:"Python Data Analyst", label:"Automation", market:84, q:"ต้องทำรายงานยอดขายซ้ำทุกสัปดาห์ ควรใช้ Python อย่างไร?", options:[
-      { text:"ทำมือใหม่ทุกสัปดาห์", score:30, lack:"Automation Thinking", improve:"Scheduled Scripts", reason:"เพราะเสียเวลางานซ้ำ" },
-      { text:"เขียนสคริปต์อ่านข้อมูล วิเคราะห์ และสร้างรายงานอัตโนมัติ", score:92, strength:"Analytics Automation", reason:"เพราะเพิ่มประสิทธิภาพและลดความผิดพลาด" },
-      { text:"ใช้สูตรเดาสุ่ม", score:10, lack:"Analytical Integrity", improve:"Validation", reason:"เพราะรายงานต้องน่าเชื่อถือ" },
-      { text:"ส่งข้อมูลดิบให้หัวหน้า", score:25, lack:"Reporting Skill", improve:"Insight Reporting", reason:"เพราะควรสรุปข้อมูลให้ใช้ตัดสินใจได้" }
-    ]}
-  ],
-
-  "AI Career / HR Tech Assistant": [
-    { key:"hr_q1", group:"AI Career / HR Tech Assistant", label:"Resume Screening", market:84, q:"ใช้ AI คัด Resume แล้วกลัวเกิด Bias ควรทำอย่างไร?", options:[
-      { text:"ให้ AI ตัดสินทั้งหมด", score:20, lack:"AI Ethics", improve:"Human Oversight", reason:"เพราะ AI อาจมีอคติจากข้อมูล" },
-      { text:"ตั้งเกณฑ์ชัด ตรวจผลลัพธ์ และให้มนุษย์ตัดสินขั้นสุดท้าย", score:92, strength:"Responsible AI in HR", reason:"เพราะลด Bias และเพิ่มความเป็นธรรม" },
-      { text:"คัดจากรูปโปรไฟล์", score:5, lack:"Fair Hiring", improve:"HR Ethics", reason:"เพราะไม่เกี่ยวกับความสามารถและเสี่ยงเลือกปฏิบัติ" },
-      { text:"สุ่มเลือกผู้สมัคร", score:15, lack:"Screening Process", improve:"Competency Criteria", reason:"เพราะไม่สะท้อนทักษะจริง" }
-    ]},
-    { key:"hr_q2", group:"AI Career / HR Tech Assistant", label:"Skill Matching", market:82, q:"ผู้ใช้มีทักษะไม่ตรงกับงานในฝัน ควรแนะนำอย่างไร?", options:[
-      { text:"บอกว่าไม่มีทางทำอาชีพนั้นได้", score:15, lack:"Career Coaching", improve:"Growth Mindset", reason:"เพราะควรเสนอเส้นทางพัฒนา" },
-      { text:"วิเคราะห์ Skill Gap และแนะนำคอร์ส/โปรเจกต์เพื่อปิดช่องว่าง", score:92, strength:"Career Path Recommendation", reason:"เพราะช่วยให้ผู้ใช้เห็นแผนที่ทำได้จริง" },
-      { text:"แนะนำงานมั่ว ๆ", score:10, lack:"Matching Logic", improve:"Career Analytics", reason:"เพราะคำแนะนำต้องอิงข้อมูล" },
-      { text:"ให้สมัครทุกงานพร้อมกัน", score:30, lack:"Job Strategy", improve:"Targeted Application", reason:"เพราะควรเลือกงานที่สอดคล้องกับทักษะและเป้าหมาย" }
-    ]},
-    { key:"hr_q3", group:"AI Career / HR Tech Assistant", label:"Interview Coaching", market:80, q:"ผู้ใช้ตอบสัมภาษณ์ไม่มั่นใจ ควรใช้ AI ช่วยอย่างไร?", options:[
-      { text:"ให้ AI แต่งคำตอบปลอมทั้งหมด", score:20, lack:"Authenticity", improve:"Interview Ethics", reason:"เพราะคำตอบควรสะท้อนตัวตนจริง" },
-      { text:"ให้ AI จำลองคำถาม ให้ Feedback และช่วยปรับโครงสร้างคำตอบ", score:90, strength:"AI Interview Coaching", reason:"เพราะฝึกได้จริงและยังคงความเป็นตัวเอง" },
-      { text:"บอกให้ท่องจำคำตอบเดียว", score:30, lack:"Adaptive Communication", improve:"STAR Method", reason:"เพราะสถานการณ์สัมภาษณ์เปลี่ยนได้" },
-      { text:"ไม่ต้องฝึก ไปตอบสด", score:25, lack:"Preparation", improve:"Mock Interview Practice", reason:"เพราะการฝึกช่วยลดความตื่นเต้น" }
-    ]},
-    { key:"hr_q4", group:"AI Career / HR Tech Assistant", label:"Privacy", market:86, q:"ระบบเก็บข้อมูล Resume และผลประเมินทักษะ ควรคำนึงถึงอะไร?", options:[
-      { text:"เอาข้อมูลไปขายต่อ", score:5, lack:"Privacy Ethics", improve:"Data Protection", reason:"เพราะละเมิดความเป็นส่วนตัว" },
-      { text:"ขอความยินยอม เก็บเท่าที่จำเป็น และปกป้องข้อมูล", score:92, strength:"Data Privacy Awareness", reason:"เพราะข้อมูลอาชีพและ Resume เป็นข้อมูลสำคัญ" },
-      { text:"เผยแพร่ผลประเมินทุกคน", score:10, lack:"Confidentiality", improve:"Privacy Policy", reason:"เพราะผู้ใช้ควบคุมข้อมูลของตนเองไม่ได้" },
-      { text:"ไม่แจ้งอะไรผู้ใช้", score:20, lack:"Transparency", improve:"Consent Management", reason:"เพราะระบบควรโปร่งใส" }
-    ]}
-  ]
-};
+  ];
 
  function renderQuiz() {
   const quiz = byId('quiz');
   if (!quiz) return;
 
-  const selectedCareer = byId('targetCareer') ? byId('targetCareer').value : 'Data Analyst';
-  const questions = getCurrentQuestions();
+  const customOptions = {
+    ai: [
+      { text: 'ไม่เคยใช้ AI มาก่อน', score: 25 },
+      { text: 'ใช้ ChatGPT ถามคำถามทั่วไป', score: 45 },
+      { text: 'ใช้ AI ช่วยเรียนหรือทำงาน', score: 70 },
+      { text: 'ใช้ AI สร้าง Workflow และ Automation', score: 90 }
+    ],
 
-  quiz.innerHTML = `
-    <div class="white-card" style="border-left:8px solid #1dbea0;">
-      <span class="badge">Career Assessment</span>
-      <h2>คำถามเฉพาะอาชีพ: ${escapeHTML(selectedCareer)}</h2>
-      <p>ระบบจะแสดงคำถามตามสายอาชีพที่เลือก และใช้คำตอบไปวิเคราะห์จุดแข็ง/ทักษะที่ต้องพัฒนา</p>
-    </div>
-  ` + questions.map((s, index) => {
-    const opts = (s.options || []).map(o => {
-      const selected = answers[s.key] === o.score ? 'selected' : '';
-      return `
-        <button type="button"
-                class="option ${selected}"
-                data-skill="${s.key}"
-                data-score="${o.score}">
-          ${escapeHTML(o.text)}
-        </button>
-      `;
-    }).join('');
+    prompt: [
+      { text: 'ไม่เคยเขียน Prompt', score: 25 },
+      { text: 'ใช้ Prompt สั้น ๆ ทั่วไป', score: 45 },
+      { text: 'ปรับแต่ง Prompt เพื่อให้ได้ผลลัพธ์ดีขึ้น', score: 70 },
+      { text: 'ออกแบบ Prompt ขั้นสูงและ Chain Prompt ได้', score: 90 }
+    ],
+
+    data: [
+      { text: 'ไม่เคยวิเคราะห์ข้อมูล', score: 25 },
+      { text: 'ใช้ Excel พื้นฐาน', score: 45 },
+      { text: 'ใช้ Pivot Table และ Dashboard', score: 70 },
+      { text: 'วิเคราะห์ข้อมูลเชิงลึกและนำเสนอ Insight ได้', score: 90 }
+    ],
+
+    sql: [
+      { text: 'ไม่เคยใช้ SQL', score: 25 },
+      { text: 'เขียน SELECT พื้นฐานได้', score: 45 },
+      { text: 'JOIN และ Aggregate ได้', score: 70 },
+      { text: 'ออกแบบฐานข้อมูลและ Query ซับซ้อนได้', score: 90 }
+    ],
+
+    human: [
+      { text: 'ยังไม่มั่นใจในการสื่อสาร', score: 25 },
+      { text: 'สื่อสารงานพื้นฐานได้', score: 45 },
+      { text: 'นำเสนอและทำงานเป็นทีมได้ดี', score: 70 },
+      { text: 'เป็นผู้นำทีมและแก้ปัญหาความขัดแย้งได้', score: 90 }
+    ],
+
+    career: [
+      { text: 'ไม่มี Portfolio', score: 25 },
+      { text: 'มีผลงานแต่ยังไม่จัดเป็น Portfolio', score: 45 },
+      { text: 'มี Portfolio พร้อมสมัครงาน', score: 70 },
+      { text: 'มี Portfolio พร้อม Case Study และ Project จริง', score: 90 }
+    ]
+  };
+
+  quiz.innerHTML = skills.map(s => {
+
+    const opts = customOptions[s.key]
+      .map(o => {
+        const selected = answers[s.key] === o.score ? 'selected' : '';
+
+        return `
+          <button type="button"
+                  class="option ${selected}"
+                  data-skill="${s.key}"
+                  data-score="${o.score}">
+            ${o.text}
+          </button>
+        `;
+      })
+      .join('');
 
     return `
       <div class="white-card">
-        <p><b style="color:#1dbea0">${escapeHTML(s.group)}</b> • ${escapeHTML(s.label)}</p>
-        <h2>Q${index + 1}: ${escapeHTML(s.q)}</h2>
+        <p><b style="color:#1dbea0">${s.group}</b></p>
+        <h2>${s.q}</h2>
         ${opts}
       </div>
     `;
@@ -1511,7 +2534,7 @@ Logout
     { title: 'Digital Marketing Executive', company: 'Tellscore', match: 78, salary: '22,000 - 40,000', skill: 'SEO, Analytics, AI Tools' }
   ];
 
-  let answers = buildDefaultAnswers();
+  let answers = { ai: 45, prompt: 25, data: 45, sql: 25, human: 70, career: 45 };
   let cart = [];
   let radarChart = null;
   let teacherChart = null;
@@ -1520,56 +2543,38 @@ Logout
     return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
   function byId(id) { return document.getElementById(id); }
+  function average() { const values = Object.values(answers); return Math.round(values.reduce((a, b) => a + b, 0) / values.length); }
   function baht(n) { return Number(n).toLocaleString('th-TH'); }
-
-  function getSelectedCareer(){
-    return byId('targetCareer') ? byId('targetCareer').value : 'Data Analyst';
-  }
-
-  function getCurrentQuestions(){
-    const career = getSelectedCareer();
-    return careerQuestionBank[career] || careerQuestionBank['Data Analyst'];
-  }
-
-  function buildDefaultAnswers(){
-    const base = { ai:45, prompt:45, data:45, sql:45, human:45, career:45 };
-    Object.values(careerQuestionBank).flat().forEach(q => {
-      base[q.key] = 45;
-    });
-    return base;
-  }
-
-  function average() {
-    const questions = getCurrentQuestions();
-    const values = questions.map(q => Number(answers[q.key] || 45));
-    return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
-  }
-
-  function getGaps() {
-    return getCurrentQuestions()
-      .map(s => {
-        const score = Number(answers[s.key] || 45);
-        const selectedOption = (s.options || []).find(o => o.score === score) || null;
-        return Object.assign({}, s, {
-          score,
-          selectedOption,
-          gap: Math.max(s.market - score, 0)
-        });
-      })
-      .sort((a,b)=>b.gap-a.gap);
-  }
-
+  function getGaps() { return skills.map(s => Object.assign({}, s, { gap: Math.max(s.market - answers[s.key], 0) })).sort((a,b)=>b.gap-a.gap); }
   function weakSkillKeys() { return getGaps().filter(g => g.gap >= 20).map(g => g.key); }
 
 
+  // Pages that require login
+  const protectedPages = ['dashboard','marketplace','checkout','assessment','career','learning','tutors','jobs','premium','teacher'];
+
+  function showLoginModal(){
+    const m = document.getElementById('loginRequiredModal');
+    if(m) m.style.display = 'flex';
+  }
+  function closeLoginModal(){
+    const m = document.getElementById('loginRequiredModal');
+    if(m) m.style.display = 'none';
+  }
+  window.closeLoginModal = closeLoginModal;
+  window.showLoginModal = showLoginModal;
+
   function showPage(id) {
+    // Gate protected pages
+    if(protectedPages.includes(id) && localStorage.getItem('isLoggedIn') !== 'true'){
+      showLoginModal();
+      return;
+    }
     const section = byId(id);
     if (!section) return;
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     section.classList.add('active');
     document.querySelectorAll('nav button').forEach(btn => btn.classList.toggle('active', btn.dataset.page === id));
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (id === 'assessment') renderQuiz();
     if (id === 'dashboard') renderCharts();
     if (id === 'teacher') renderTeacherChart();
     if (id === 'marketplace') renderCourses();
@@ -1578,141 +2583,92 @@ Logout
     if (id === 'checkout') renderCart();
   }
   function isLogin(){
-  return localStorage.getItem('futureReadyUser') !== null;
-}
-
-function registerUser(){
-
-  const name = byId('regName').value.trim();
-  const email = byId('regEmail').value.trim();
-  const password = byId('regPassword').value.trim();
-
-  if(!name || !email || !password){
-    alert('กรุณากรอกข้อมูลให้ครบ');
-    return;
+    return localStorage.getItem('futureReadyUser') !== null;
   }
 
-  const user = {
-    name,
-    email,
-    password,
-    career: byId('targetCareer').value
-  };
+  function loginUser(){
+    const emailEl = byId('popupLoginEmail') || byId('regEmail');
+    const passEl  = byId('popupLoginPassword') || byId('regPassword');
 
-  localStorage.setItem(
-    'futureReadyUser',
-    JSON.stringify(user)
-  );
+    const email    = emailEl ? emailEl.value.trim() : '';
+    const password = passEl  ? passEl.value.trim()  : '';
 
-  alert('สร้างบัญชีสำเร็จ');
-}
+    const user = JSON.parse(localStorage.getItem('futureReadyUser'));
 
-function loginUser(){
-
-  const email =
-    byId('regEmail').value.trim();
-
-  const password =
-    byId('regPassword').value.trim();
-
-  const user = JSON.parse(
-    localStorage.getItem('futureReadyUser')
-  );
-
-  if(!user){
-    alert('ยังไม่มีบัญชีผู้ใช้');
-    return;
+    if(!user){
+      alert('ยังไม่มีบัญชีผู้ใช้ กรุณาสมัครสมาชิกก่อน');
+      return;
+    }
+    if(user.email === email && user.password === password){
+      localStorage.setItem('isLoggedIn', 'true');
+      loadUserInfo();
+      document.getElementById('mainMenu').classList.remove('hide-before-login');
+      const cartBtn = byId('cartIconBtn');
+      if(cartBtn) cartBtn.style.display = 'flex';
+      if(window.updateNavAuthButtons) window.updateNavAuthButtons();
+      if(typeof closeAuthModal === 'function') closeAuthModal();
+      if(typeof showToast === 'function') showToast('ยินดีต้อนรับกลับ ' + (user.name || '') + ' 👋');
+      go('home');
+    } else {
+      if(byId('loginPopupStatus')) byId('loginPopupStatus').textContent = '⚠️ อีเมลหรือรหัสผ่านไม่ถูกต้อง';
+      alert('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
+    }
   }
 
-  if(
-  user.email === email &&
-  user.password === password
-){
 
-  localStorage.setItem(
-    'isLoggedIn',
-    'true'
-  );
 
-  document.getElementById('mainMenu').classList.remove('hide-before-login');
-  loadSavedData();
-  renderQuiz();
-  calculateResult();
-  loadUserInfo();
-  showPage('home');
-} else {
-  alert('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
-}
-}
+
 
 function logoutUser(){
   if(!confirm('ต้องการออกจากระบบ?')) return;
   localStorage.removeItem('isLoggedIn');
   document.getElementById('mainMenu').classList.add('hide-before-login');
+  const cartBtn = byId('cartIconBtn');
+  if (cartBtn) cartBtn.style.display = 'none';
+  if(window.updateNavAuthButtons) window.updateNavAuthButtons();
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-  document.getElementById('login').classList.add('active');
+  showPage('home');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
   
 
   function setAnswer(key, score) {
+    if (!Object.prototype.hasOwnProperty.call(answers, key)) return;
     answers[key] = Number(score);
-    saveAssessment();
     renderQuiz();
     calculateResult();
   }
 
   function calculateResult() {
     const avg = average();
-    [['homeScore', avg + '%'], ['dashScore', avg + '%']].forEach(([id, text]) => {
-      if (byId(id)) byId(id).textContent = text;
-    });
+    [['homeScore', avg + '%'], ['dashScore', avg + '%']].forEach(([id, text]) => { if (byId(id)) byId(id).textContent = text; });
     if (byId('homeBar')) byId('homeBar').style.width = avg + '%';
 
-    const questions = getCurrentQuestions();
-    const selectedCareer = getSelectedCareer();
-
     if (byId('skillBars')) {
-      byId('skillBars').innerHTML = `
-        <p><b>อาชีพเป้าหมาย:</b> ${escapeHTML(selectedCareer)}</p>
-      ` + questions.map(s => {
-        const score = Number(answers[s.key] || 45);
+      byId('skillBars').innerHTML = skills.map(s => {
+        const score = answers[s.key];
         return '<p><b>' + escapeHTML(s.label) + '</b> <span style="float:right">' + score + '%</span></p><div class="bar-bg"><div class="bar" style="width:' + score + '%"></div></div>';
       }).join('');
     }
 
     const gaps = getGaps();
     if (byId('gapList')) {
-      byId('gapList').innerHTML = `
-        <div class="white-card">
-          <h2>ผลวิเคราะห์เฉพาะอาชีพ: ${escapeHTML(selectedCareer)}</h2>
-          <p><b>คะแนนรวม:</b> ${avg}%</p>
-        </div>
-      ` + gaps.map(g => {
-        const opt = g.selectedOption || {};
-        const analysis = opt.strength
-          ? `<p><b>จุดแข็ง:</b> ${escapeHTML(opt.strength)}</p>`
-          : `<p><b>ขาด:</b> ${escapeHTML(opt.lack || g.label)}</p><p><b>ต้องเพิ่ม:</b> ${escapeHTML(opt.improve || 'ฝึกทำโปรเจกต์จริงและเรียนคอร์สเสริม')}</p>`;
-        return `
-          <div class="white-card">
-            <h3>${escapeHTML(g.label)}</h3>
-            <p><b>คะแนนคุณ:</b> ${g.score}% | <b>ตลาดต้องการ:</b> ${g.market}% | <b>Gap:</b> ${g.gap}%</p>
-            ${analysis}
-            <p><b>เพราะ:</b> ${escapeHTML(opt.reason || 'ทักษะนี้มีผลต่อความพร้อมในการทำงานจริง')}</p>
-          </div>
-        `;
+      byId('gapList').innerHTML = gaps.slice(0,3).map(g => {
+        const course = courses.find(c => c.skill === g.key);
+        const banner = course ? '<div class="white-card"><h3>แนะนำคอร์ส: ' + escapeHTML(course.title) + '</h3><p>' + escapeHTML(course.desc) + '</p><p class="price">' + baht(course.price) + ' บาท</p><button class="btn" data-add-course="' + course.id + '">เพิ่มลงตะกร้า</button></div>' : '';
+        return '<p><b>' + escapeHTML(g.label) + '</b> ยังขาด ' + g.gap + '% เมื่อเทียบกับตลาดแรงงาน</p>' + banner;
       }).join('');
     }
 
     if (byId('careerTable')) {
       const career = [
-        [selectedCareer, avg, 'คำถามและ Skill Gap วิเคราะห์จากอาชีพที่เลือก'],
-        ['AI Content Creator', Math.min(98, avg + 8), 'คอร์ส AI Content + Prompt'],
-        ['Data Analyst', Math.min(95, avg + 6), 'คอร์ส SQL / Power BI / Python'],
-        ['UX/UI Designer', Math.min(92, avg + 5), 'คอร์ส UX Research / Figma']
+        ['AI Content Creator', Math.min(98, avg + 25), 'คอร์ส Prompt + บริษัทลงประกาศงาน'],
+        ['UX Researcher', Math.min(92, avg + 13), 'คอร์ส UX + ติว Portfolio'],
+        ['Data Analyst', Math.min(88, avg + 6), 'คอร์ส SQL / Power BI'],
+        ['Digital Marketing', Math.min(86, avg + 10), 'คอร์ส AI Marketing']
       ].sort((a,b)=>b[1]-a[1]);
-      byId('careerTable').innerHTML = career.map(c => '<tr><td><b>' + escapeHTML(c[0]) + '</b></td><td><span class="badge">' + c[1] + '%</span></td><td>' + escapeHTML(c[2]) + '</td></tr>').join('');
+      byId('careerTable').innerHTML = career.map(c => '<tr><td><b>' + c[0] + '</b></td><td><span class="badge">' + c[1] + '%</span></td><td>' + c[2] + '</td></tr>').join('');
     }
 
     if (byId('moduleList')) {
@@ -1724,15 +2680,14 @@ function logoutUser(){
     calculateResult();
     const ctx = byId('radarChart');
     if (!ctx || typeof Chart === 'undefined') return;
-    const questions = getCurrentQuestions();
     if (radarChart) radarChart.destroy();
     radarChart = new Chart(ctx, {
       type: 'radar',
       data: {
-        labels: questions.map(s => s.label),
+        labels: skills.map(s => s.label),
         datasets: [
-          { label: 'ผู้ใช้', data: questions.map(s => Number(answers[s.key] || 45)), borderColor: '#271f66', backgroundColor: 'rgba(39,31,102,.18)' },
-          { label: 'ตลาดแรงงาน', data: questions.map(s => s.market), borderColor: '#1dbea0', backgroundColor: 'rgba(29,190,160,.20)' }
+          { label: 'ผู้ใช้', data: skills.map(s => answers[s.key]), borderColor: '#271f66', backgroundColor: 'rgba(39,31,102,.18)' },
+          { label: 'ตลาดแรงงาน', data: skills.map(s => s.market), borderColor: '#1dbea0', backgroundColor: 'rgba(29,190,160,.20)' }
         ]
       },
       options: { responsive: true, scales: { r: { min: 0, max: 100 } } }
@@ -1740,10 +2695,39 @@ function logoutUser(){
   }
 
  function renderCourses() {
-  const list = courses;
-    byId('courseBanner').innerHTML = '<h2>คอร์สที่ระบบแนะนำจาก Skill Gap</h2><p>ระบบเลือกคอร์สตามทักษะที่คุณยังขาด หากสมัครเรียน แพลตฟอร์มจะมีรายได้จากค่าคอร์สหรือค่าคอมมิชชัน</p>';
-    byId('courseList').innerHTML = list.map(c => '<div class="white-card"><span class="badge">' + c.level + '</span><h2>' + escapeHTML(c.title) + '</h2><p>' + escapeHTML(c.desc) + '</p><p>⏱ ' + c.hours + ' ชั่วโมง</p><p class="price">' + baht(c.price) + ' บาท</p><button class="btn" data-add-course="' + c.id + '">สมัครเรียน</button></div>').join('');
-  }
+  const FREE_LIMIT = 4;
+  const isPremium = !!localStorage.getItem('premiumPlan');
+
+  const notice = byId('freeTierNotice');
+  if (notice) notice.classList.toggle('hidden', isPremium);
+
+  byId('courseBanner').innerHTML = isPremium
+    ? '<h2>🎓 คอร์สทั้งหมด — สมาชิก Premium</h2><p>คุณสามารถเข้าถึงคอร์สได้ทุกคอร์ส ขอบคุณที่เป็นสมาชิก Premium!</p>'
+    : '<h2>คอร์สที่ระบบแนะนำจาก Skill Gap</h2><p>สมาชิกฟรีเข้าถึงได้ <b>4 คอร์สแรก</b> — สมัคร <b>Premium</b> เพื่อปลดล็อกทุกคอร์ส</p>';
+
+  byId('courseList').innerHTML = courses.map((c, i) => {
+    const locked = !isPremium && i >= FREE_LIMIT;
+    if (locked) {
+      return `<div class="white-card course-locked">
+        <span class="badge badge-locked">🔒 Premium</span>
+        <div class="lock-overlay">
+          <div class="lock-icon">🔒</div>
+          <h2>${escapeHTML(c.title)}</h2>
+          <p class="lock-msg">คอร์สนี้สำหรับสมาชิก <b>Premium</b> เท่านั้น</p>
+          <button class="btn btn-premium-cta" onclick="go('premium')">สมัคร Premium เพื่อปลดล็อก</button>
+        </div>
+      </div>`;
+    }
+    return `<div class="white-card">
+      <span class="badge">${c.level}</span>
+      <h2>${escapeHTML(c.title)}</h2>
+      <p>${escapeHTML(c.desc)}</p>
+      <p>⏱ ${c.hours} ชั่วโมง</p>
+      <p class="price">${baht(c.price)} บาท</p>
+      <button class="btn" data-add-course="${c.id}">สมัครเรียน</button>
+    </div>`;
+  }).join('');
+}
 
   function renderTutors() {
 
@@ -1781,53 +2765,60 @@ function logoutUser(){
     const total = cart.reduce((sum, item) => sum + item.price, 0);
     byId('cartTotal').textContent = baht(total);
     if (byId('teacherRevenue')) byId('teacherRevenue').textContent = baht(total) + ' บาท';
+    // Update cart badge
+    const badge = byId('cartCountBadge');
+    if (badge) {
+      badge.textContent = cart.length;
+      badge.style.display = cart.length > 0 ? 'flex' : 'none';
+    }
   }
 
   function saveCart() { localStorage.setItem('futureReadyCart', JSON.stringify(cart)); }
   function loadCart() { try { cart = JSON.parse(localStorage.getItem('futureReadyCart') || '[]'); } catch(e) { cart = []; } }
 
   function registerUser(){
+    const nameEl    = byId('popupRegName')     || byId('regName');
+    const emailEl   = byId('popupRegEmail')    || byId('regEmail');
+    const passEl    = byId('popupRegPassword') || byId('regPassword');
+    const careerEl  = byId('popupTargetCareer')|| byId('targetCareer');
 
-  const name = byId('regName').value.trim();
-  const email = byId('regEmail').value.trim();
-  const password = byId('regPassword').value.trim();
+    const name     = nameEl  ? nameEl.value.trim()  : '';
+    const email    = emailEl ? emailEl.value.trim()  : '';
+    const password = passEl  ? passEl.value.trim()   : '';
 
-  if(!name || !email || !password){
-    alert('กรุณากรอกชื่อ, อีเมล และรหัสผ่านให้ครบ');
-    return;
+    if(!name || !email || !password){
+      if(byId('registerPopupStatus')) byId('registerPopupStatus').textContent = '⚠️ กรุณากรอกข้อมูลให้ครบ';
+      alert('กรุณากรอกชื่อ, อีเมล และรหัสผ่านให้ครบ');
+      return;
+    }
+    if(password.length < 6){
+      alert('รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร');
+      return;
+    }
+
+    const user = { name, email, password, career: careerEl ? careerEl.value : 'Data Analyst' };
+    localStorage.setItem('futureReadyUser', JSON.stringify(user));
+    localStorage.setItem('isLoggedIn', 'true');
+
+    loadUserInfo();
+    document.getElementById('mainMenu').classList.remove('hide-before-login');
+    const cartBtnReg = byId('cartIconBtn');
+    if(cartBtnReg) cartBtnReg.style.display = 'flex';
+    if(window.updateNavAuthButtons) window.updateNavAuthButtons();
+
+    if(typeof closeAuthModal === 'function') closeAuthModal();
+    if(typeof showToast === 'function') showToast('สมัครสมาชิกสำเร็จ! ยินดีต้อนรับ ' + name + ' 🎉');
+
+    go('home');
   }
-
-  const user = {
-    name,
-    email,
-    password,
-    career: byId('targetCareer').value
-  };
-
-  localStorage.setItem('futureReadyUser', JSON.stringify(user));
-  localStorage.setItem('isLoggedIn', 'true');
-
-  loadUserInfo();
-
-  document.getElementById('mainMenu').classList.remove('hide-before-login');
-
-  byId('loginStatus').textContent = 'บันทึกบัญชีเรียบร้อย : ' + user.name;
-
-  alert('สมัครสมาชิกสำเร็จ! ยินดีต้อนรับ ' + name);
-
-  go('home');
-}
 
   function saveProfile() {
     const old = JSON.parse(localStorage.getItem('futureReadyUser') || '{}');
-    const user = Object.assign({}, old, {
-      career: byId('targetCareer').value,
-      updatedAt: new Date().toLocaleString('th-TH')
-    });
+   const user = Object.assign({}, old, {
+ career: byId('targetCareer').value,
+ updatedAt: new Date().toLocaleString('th-TH')
+});
     localStorage.setItem('futureReadyUser', JSON.stringify(user));
-    renderQuiz();
-    calculateResult();
-    loadUserInfo();
   }
 
   function saveAssessment() {
@@ -1837,15 +2828,14 @@ function logoutUser(){
 
   function loadSavedData() {
     try {
-      answers = buildDefaultAnswers();
       const savedAnswers = localStorage.getItem('futureReadyAnswers');
       if (savedAnswers) answers = Object.assign({}, answers, JSON.parse(savedAnswers));
-
       const user = JSON.parse(localStorage.getItem('futureReadyUser') || '{}');
       if (user.name) {
         byId('regName').value = user.name || '';
         byId('regEmail').value = user.email || '';
-        if (user.career && byId('targetCareer')) byId('targetCareer').value = user.career;
+        if (user.career) byId('targetCareer').value = user.career;
+        
         byId('loginStatus').textContent = 'กำลังใช้งานบัญชี: ' + user.name;
       }
     } catch (e) { console.warn(e); }
@@ -1867,7 +2857,7 @@ function logoutUser(){
 }
 
   function resetAssessment() {
-    answers = buildDefaultAnswers();
+    answers = { ai:45, prompt:25, data:45, sql:25, human:70, career:45 };
     localStorage.removeItem('futureReadyAnswers');
     localStorage.removeItem('futureReadyScore');
     renderQuiz();
@@ -1936,11 +2926,7 @@ function logoutUser(){
 
 byId('loginBtn')
 .addEventListener('click', loginUser);
-    byId('targetCareer').addEventListener('change', function(){
-  saveProfile();
-  renderQuiz();
-  calculateResult();
-});
+    byId('targetCareer').addEventListener('change', saveProfile);
   
     byId('analyzeBtn').addEventListener('click', () => { calculateResult(); saveAssessment(); go('dashboard'); });
     byId('resetBtn').addEventListener('click', resetAssessment);
@@ -2067,6 +3053,8 @@ function go(page){
   window.exportReport = exportReport;
   window.buyPremium = buyPremium;
   window.cancelPremium = cancelPremium;
+  window.registerUser = registerUser;
+  window.loginUser = loginUser;
 
 
   loadSavedData();
@@ -2116,15 +3104,668 @@ document.addEventListener("click", function(e){
 });
 window.addEventListener('DOMContentLoaded', function(){
   const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  function updateNavAuthButtons(){
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const logoutBtn = document.querySelector('button[onclick="logoutUser()"]');
+    const loginNavBtn = document.getElementById('loginNavBtn');
+    if(logoutBtn) logoutBtn.style.display = loggedIn ? '' : 'none';
+    if(loginNavBtn) loginNavBtn.style.display = loggedIn ? 'none' : '';
+  }
+  updateNavAuthButtons();
+  window.updateNavAuthButtons = updateNavAuthButtons;
+
   if(isLoggedIn === 'true'){
     document.getElementById('mainMenu').classList.remove('hide-before-login');
+    const cartBtn = document.getElementById('cartIconBtn');
+    if (cartBtn) cartBtn.style.display = 'flex';
     loadUserInfo();
-    showPage('home');
-  } else {
-    showPage('login');
+  }
+  showPage('home');
+
+  // Show login reminder popup after 8 seconds if not logged in
+  if(isLoggedIn !== 'true'){
+    setTimeout(function(){
+      openAuthModal('login');
+    }, 8000);
   }
 });
+
+/* ==================== PREMIUM PRO JS ==================== */
+
+// Interview Q&A bank
+const interviewQA = {
+  data: [
+    { q:'บอกประสบการณ์การใช้ SQL ของคุณหน่อยได้ไหม?', fb:'ควรระบุ Database ที่เคยใช้ (MySQL, PostgreSQL) และตัวอย่าง Query เช่น JOIN, GROUP BY' },
+    { q:'คุณใช้ Power BI หรือ Tableau เป็นไหม? มีผลงาน Dashboard อะไรบ้าง?', fb:'ควรเล่าโปรเจกต์จริง บอก KPI ที่ติดตาม และ insight ที่ค้นพบ' },
+    { q:'ถ้าข้อมูลมี Missing Value คุณจะจัดการอย่างไร?', fb:'ตอบได้ว่า drop, fill mean/median หรือ imputation ขึ้นกับ context และสัดส่วนของ Missing' },
+    { q:'อธิบาย Data Pipeline ที่คุณเคยสร้างให้ฟังหน่อย', fb:'ควรกล่าวถึง Source → Transform → Load และเครื่องมือที่ใช้ เช่น Python, Airflow, dbt' }
+  ],
+  ai: [
+    { q:'อธิบาย Prompt Engineering คืออะไร และใช้อย่างไร', fb:'ควรพูดถึง Zero-shot, Few-shot, Chain-of-Thought และตัวอย่างการใช้งานจริง' },
+    { q:'คุณเคยใช้ AI ช่วยงานอะไรบ้าง? ได้ผลลัพธ์ยังไง?', fb:'ยิ่งมีตัวเลขหรือ outcome ชัดเจนยิ่งดี เช่น ลดเวลา 40%, ผลิต content เพิ่ม 3x' },
+    { q:'ข้อจำกัดของ LLM ที่คุณคิดว่าสำคัญที่สุดคืออะไร?', fb:'Hallucination, knowledge cutoff, context window และ bias ล้วนเป็นคำตอบที่ดี' }
+  ],
+  ux: [
+    { q:'อธิบาย Design Thinking Process ของคุณ', fb:'ควรครอบคลุม Empathize, Define, Ideate, Prototype, Test พร้อมตัวอย่างโปรเจกต์' },
+    { q:'คุณทำ User Research ด้วยวิธีอะไรบ้าง?', fb:'Interview, Survey, Usability Test, Card Sorting ล้วนเป็นคำตอบที่ครอบคลุม' },
+    { q:'อธิบายความแตกต่างระหว่าง UX กับ UI', fb:'UX = ประสบการณ์ผู้ใช้ (flow, usability), UI = visual design (สี, font, layout)' }
+  ],
+  mkt: [
+    { q:'คุณวัด ROI ของ Digital Marketing Campaign ยังไง?', fb:'กล่าวถึง CPA, ROAS, CTR, Conversion Rate และเครื่องมือเช่น GA4, Meta Ads Manager' },
+    { q:'อธิบายความแตกต่างระหว่าง SEO และ SEM', fb:'SEO = organic, ระยะยาว; SEM = paid ads, เร็ว เห็นผลทันที แต่ต้องจ่ายเงิน' },
+    { q:'คุณสร้าง Content Strategy ยังไง?', fb:'ควรกล่าวถึง Audience persona, Content Pillar, Calendar และ KPI วัดผล' }
+  ],
+  hr: [
+    { q:'คุณรู้จัก HR Tech เครื่องมืออะไรบ้าง?', fb:'ATS (Workday, Taleo), HRIS, People Analytics, AI Screening Tools ล้วนแสดงถึงความเข้าใจ HRTech' },
+    { q:'AI จะเปลี่ยน HR ยังไงในอนาคต?', fb:'ครอบคลุม Automated Screening, Predictive Analytics, Employee Experience และ Bias ที่ต้องระวัง' },
+    { q:'อธิบาย Employee Experience ที่ดีคืออะไร?', fb:'ครอบคลุม Onboarding, Development, Recognition, Wellbeing และ Offboarding' }
+  ]
+};
+
+let interviewStep = 0;
+let interviewJob = 'data';
+
+function startInterview() {
+  interviewJob = document.getElementById('interviewJobSelect')?.value || 'data';
+  interviewStep = 0;
+  document.getElementById('interviewFeedback').style.display = 'none';
+  const chat = document.getElementById('interviewChat');
+  chat.innerHTML = '';
+  const qa = interviewQA[interviewJob];
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble-ai';
+  bubble.textContent = '👋 ยินดีต้อนรับสู่ Mock Interview! ' + qa[0].q;
+  chat.appendChild(bubble);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function submitAnswer() {
+  const input = document.getElementById('interviewAnswer');
+  const answer = input.value.trim();
+  if (!answer) return;
+  const chat = document.getElementById('interviewChat');
+  const qa = interviewQA[interviewJob] || interviewQA.data;
+
+  // Show user answer
+  const userBubble = document.createElement('div');
+  userBubble.className = 'chat-bubble-user';
+  userBubble.textContent = answer;
+  chat.appendChild(userBubble);
+
+  // Show feedback
+  const fb = qa[interviewStep] ? qa[interviewStep].fb : 'คำตอบดีมากครับ!';
+  document.getElementById('feedbackText').textContent = fb;
+  document.getElementById('interviewFeedback').style.display = 'block';
+
+  interviewStep++;
+  input.value = '';
+
+  // Next question
+  setTimeout(() => {
+    if (interviewStep < qa.length) {
+      const aiBubble = document.createElement('div');
+      aiBubble.className = 'chat-bubble-ai';
+      aiBubble.textContent = qa[interviewStep].q;
+      chat.appendChild(aiBubble);
+    } else {
+      const endBubble = document.createElement('div');
+      endBubble.className = 'chat-bubble-ai';
+      endBubble.textContent = '🎉 จบการสัมภาษณ์! คุณทำได้ดีมาก กด "เริ่มใหม่" เพื่อฝึกซ้ำหรือเปลี่ยนสายงาน';
+      chat.appendChild(endBubble);
+    }
+    chat.scrollTop = chat.scrollHeight;
+  }, 600);
+}
+
+// Resume upload simulation
+function simulateResumeUpload() {
+  document.getElementById('resumeResult').style.display = 'block';
+  document.getElementById('resumeResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Career Roadmap data
+const roadmapData = {
+  data: {
+    6: [
+      { month: 'เดือน 1-2', title: 'พื้นฐาน SQL & Excel', tasks: 'เรียน SQL เบื้องต้น, Pivot Table, Power Query, ฝึก Dataset จริง' },
+      { month: 'เดือน 3-4', title: 'Power BI & Python', tasks: 'สร้าง Dashboard แรก, เรียน Python Pandas เบื้องต้น, วิเคราะห์ข้อมูลง่ายๆ' },
+      { month: 'เดือน 5',   title: 'Data Project', tasks: 'ทำ Capstone Project: Dashboard จาก Dataset จริง พร้อมลงใน Portfolio' },
+      { month: 'เดือน 6',   title: 'Job Ready', tasks: 'อัปเดต Resume, ฝึก Mock Interview, สมัครงาน Junior Data Analyst' }
+    ],
+    12: [
+      { month: 'เดือน 1-2', title: 'พื้นฐาน Data & SQL', tasks: 'SQL, Excel, Data Thinking, Spreadsheet Analysis' },
+      { month: 'เดือน 3-4', title: 'Power BI & Visualization', tasks: 'DAX, Power BI Desktop, Interactive Dashboard' },
+      { month: 'เดือน 5-6', title: 'Python & Pandas', tasks: 'Python พื้นฐาน, NumPy, Pandas, Matplotlib' },
+      { month: 'เดือน 7-8', title: 'Machine Learning เบื้องต้น', tasks: 'Scikit-learn, Regression, Classification, Model Evaluation' },
+      { month: 'เดือน 9-10', title: 'Real Projects', tasks: 'โปรเจกต์จริง 2 ชิ้น ลง GitHub และ Portfolio' },
+      { month: 'เดือน 11-12', title: 'Job Ready & Interview', tasks: 'Mock Interview, LinkedIn, สมัครงาน Data Analyst' }
+    ]
+  },
+  ai: {
+    6: [
+      { month: 'เดือน 1',   title: 'AI Literacy', tasks: 'ทำความเข้าใจ LLM, ChatGPT, Claude, Gemini และข้อจำกัด' },
+      { month: 'เดือน 2-3', title: 'Prompt Engineering', tasks: 'Zero-shot, Few-shot, CoT, System Prompt, Prompt Templates' },
+      { month: 'เดือน 4',   title: 'AI Workflow & Tools', tasks: 'LangChain เบื้องต้น, Make.com, Zapier + AI, No-code Automation' },
+      { month: 'เดือน 5',   title: 'AI Portfolio Project', tasks: 'สร้าง AI-powered tool หนึ่งชิ้น ลง GitHub / Notion' },
+      { month: 'เดือน 6',   title: 'Job Ready', tasks: 'สมัครงาน Prompt Engineer, AI Trainer, AI Content Creator' }
+    ],
+    12: [
+      { month: 'เดือน 1-2', title: 'AI Fundamentals', tasks: 'LLM, Generative AI, AI Ethics, Prompt Basics' },
+      { month: 'เดือน 3-4', title: 'Advanced Prompting', tasks: 'CoT, ReAct, Multi-shot, Structured Output, Tool Use' },
+      { month: 'เดือน 5-6', title: 'Python + AI APIs', tasks: 'OpenAI API, Claude API, Function Calling, RAG เบื้องต้น' },
+      { month: 'เดือน 7-8', title: 'LangChain & Agents', tasks: 'LangChain, LangGraph, ReAct Agents, Vector DB' },
+      { month: 'เดือน 9-10', title: 'Deploy & Product', tasks: 'Streamlit, FastAPI, Deploy AI App จริง' },
+      { month: 'เดือน 11-12', title: 'Portfolio & Job', tasks: '2 AI Projects บน GitHub, Mock Interview, สมัครงาน' }
+    ]
+  },
+  ux: {
+    6: [
+      { month: 'เดือน 1-2', title: 'UX Fundamentals', tasks: 'Design Thinking, User Research, Persona, User Journey' },
+      { month: 'เดือน 3',   title: 'Wireframe & Figma', tasks: 'Figma เบื้องต้น, Wireframe, Prototype Low-fi' },
+      { month: 'เดือน 4',   title: 'UI Design', tasks: 'Typography, Color Theory, Component, Design System' },
+      { month: 'เดือน 5',   title: 'Usability Testing', tasks: 'ทำ Usability Test กับผู้ใช้จริง ปรับ Design ตาม feedback' },
+      { month: 'เดือน 6',   title: 'Portfolio & Job', tasks: 'สร้าง Portfolio 2 Case Study ลง Behance / Notion' }
+    ],
+    12: [
+      { month: 'เดือน 1-2', title: 'UX Research', tasks: 'User Interview, Survey, Affinity Map, Persona' },
+      { month: 'เดือน 3-4', title: 'Figma & Prototyping', tasks: 'Component, Auto Layout, Interactive Prototype' },
+      { month: 'เดือน 5-6', title: 'UI Design System', tasks: 'Atomic Design, Design Token, Accessibility' },
+      { month: 'เดือน 7-8', title: 'UX Writing & Research', tasks: 'Microcopy, Content Design, A/B Testing' },
+      { month: 'เดือน 9-10', title: 'Real Project', tasks: 'Redesign แอปจริง ทำ Case Study ครบ end-to-end' },
+      { month: 'เดือน 11-12', title: 'Portfolio & Job', tasks: '3 Case Studies, Mock Interview, สมัครงาน UX Designer' }
+    ]
+  },
+  mkt: {
+    6: [
+      { month: 'เดือน 1-2', title: 'Digital Marketing Basics', tasks: 'SEO, SEM, Content Marketing, Social Media Strategy' },
+      { month: 'เดือน 3',   title: 'Paid Ads', tasks: 'Meta Ads, Google Ads เบื้องต้น, Campaign Setup' },
+      { month: 'เดือน 4',   title: 'Analytics', tasks: 'GA4, Meta Insights, รายงาน Campaign Performance' },
+      { month: 'เดือน 5',   title: 'AI + Marketing', tasks: 'AI Content Creation, ChatGPT for Copy, AI Image Tools' },
+      { month: 'เดือน 6',   title: 'Portfolio & Job', tasks: 'Case Study Campaign จริง, สมัครงาน Digital Marketing' }
+    ],
+    12: [
+      { month: 'เดือน 1-2', title: 'Foundations', tasks: 'Digital Strategy, Brand, Content, SEO Basics' },
+      { month: 'เดือน 3-4', title: 'Performance Marketing', tasks: 'Meta Ads, Google Ads, TikTok Ads, Conversion Tracking' },
+      { month: 'เดือน 5-6', title: 'Analytics & Data', tasks: 'GA4, Looker Studio, Attribution Model, A/B Testing' },
+      { month: 'เดือน 7-8', title: 'Marketing Automation', tasks: 'Email Marketing, CRM, HubSpot, Marketing Funnel' },
+      { month: 'เดือน 9-10', title: 'AI Marketing', tasks: 'AI Copy, Personalization, Predictive Analytics' },
+      { month: 'เดือน 11-12', title: 'Portfolio & Job', tasks: 'Campaign Case Study, Mock Interview, สมัครงาน' }
+    ]
+  },
+  hr: {
+    6: [
+      { month: 'เดือน 1-2', title: 'HR Fundamentals', tasks: 'HR Process, Recruitment, Onboarding, Performance Mgmt' },
+      { month: 'เดือน 3',   title: 'HR Tech Tools', tasks: 'ATS, HRIS, People Analytics เบื้องต้น, Excel for HR' },
+      { month: 'เดือน 4',   title: 'AI in HR', tasks: 'AI Screening, Chatbot Onboarding, Sentiment Analysis' },
+      { month: 'เดือน 5',   title: 'Data-Driven HR', tasks: 'HR Dashboard, Turnover Analysis, Workforce Planning' },
+      { month: 'เดือน 6',   title: 'Job Ready', tasks: 'Portfolio Project, Mock Interview, สมัครงาน HR Tech' }
+    ],
+    12: [
+      { month: 'เดือน 1-2', title: 'HR Core', tasks: 'Recruitment, L&D, Performance, Compensation' },
+      { month: 'เดือน 3-4', title: 'HR Tech Landscape', tasks: 'ATS, HRIS, LMS, People Analytics Tools' },
+      { month: 'เดือน 5-6', title: 'Data & Analytics', tasks: 'Excel, Power BI for HR, HR Metrics & KPI' },
+      { month: 'เดือน 7-8', title: 'AI in HR', tasks: 'Automated Screening, Bias Detection, AI Onboarding Bot' },
+      { month: 'เดือน 9-10', title: 'Change Management', tasks: 'Digital Transformation, Change Model, Employee Adoption' },
+      { month: 'เดือน 11-12', title: 'Portfolio & Job', tasks: 'HR Tech Case Study, Mock Interview, สมัครงาน' }
+    ]
+  }
+};
+
+function renderRoadmap() {
+  const career = document.getElementById('roadmapCareerSelect')?.value || 'data';
+  const duration = document.getElementById('roadmapDuration')?.value || '6';
+  const data = roadmapData[career]?.[duration] || roadmapData.data[6];
+  const container = document.getElementById('roadmapContainer');
+  if (!container) return;
+  container.innerHTML = data.map(item => `
+    <div class="roadmap-item">
+      <div class="roadmap-month">${item.month}</div>
+      <h3>${item.title}</h3>
+      <p>${item.tasks}</p>
+    </div>
+  `).join('');
+}
+
+// Pro Report
+function renderProReport() {
+  const el = document.getElementById('proReportContent');
+  if (!el) return;
+  const user = JSON.parse(localStorage.getItem('futureReadyUser') || '{}');
+  const score = parseInt(localStorage.getItem('futureReadyScore') || '55');
+  const career = user.career || 'Data Analyst';
+  const salaryMap = { 'Data Analyst': '35,000–65,000', 'UX/UI Designer': '30,000–60,000', 'AI Content Creator': '25,000–50,000', 'Digital Marketing': '25,000–55,000', 'Prompt Engineer': '40,000–80,000', 'Power BI Specialist': '35,000–65,000', 'Python Data Analyst': '40,000–70,000', 'AI Career / HR Tech Assistant': '28,000–55,000' };
+  const salary = salaryMap[career] || '30,000–60,000';
+  el.innerHTML = `
+    <div class="grid">
+      <div class="white-card" style="grid-column:1/-1;">
+        <h2>📋 รายงานอาชีพสำหรับ ${user.name || 'คุณ'}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:16px;">
+          <div style="background:#f0fdf4;border-radius:14px;padding:20px;text-align:center;">
+            <div style="font-size:36px;font-weight:700;color:#1dbea0;">${score}%</div>
+            <div style="font-size:13px;color:#555;margin-top:4px;">AI Readiness Score</div>
+          </div>
+          <div style="background:#eff6ff;border-radius:14px;padding:20px;text-align:center;">
+            <div style="font-size:20px;font-weight:700;color:#1d4ed8;">${career}</div>
+            <div style="font-size:13px;color:#555;margin-top:4px;">อาชีพเป้าหมาย</div>
+          </div>
+          <div style="background:#fef3c7;border-radius:14px;padding:20px;text-align:center;">
+            <div style="font-size:18px;font-weight:700;color:#92400e;">${salary}</div>
+            <div style="font-size:13px;color:#555;margin-top:4px;">เงินเดือนคาดหวัง (บาท)</div>
+          </div>
+          <div style="background:#fdf4ff;border-radius:14px;padding:20px;text-align:center;">
+            <div style="font-size:20px;font-weight:700;color:#7c3aed;">${score >= 70 ? 'สูง' : score >= 50 ? 'ปานกลาง' : 'ต้องพัฒนา'}</div>
+            <div style="font-size:13px;color:#555;margin-top:4px;">ระดับความพร้อม</div>
+          </div>
+        </div>
+      </div>
+      <div class="white-card">
+        <h2>📈 ทักษะที่ควรพัฒนาเร่งด่วน</h2>
+        <ul style="line-height:2;font-size:14px;color:#444;padding-left:20px;">
+          <li>Prompt Engineering & AI Tools</li>
+          <li>SQL & Data Analysis</li>
+          <li>Power BI / Data Visualization</li>
+          <li>Portfolio & Personal Branding</li>
+        </ul>
+      </div>
+      <div class="white-card">
+        <h2>🎯 แผนพัฒนาแนะนำ</h2>
+        <ul style="line-height:2;font-size:14px;color:#444;padding-left:20px;">
+          <li>เรียนคอร์สแนะนำใน <b>Marketplace</b></li>
+          <li>ฝึก Mock Interview ทุกสัปดาห์</li>
+          <li>สร้าง Portfolio Project 1 ชิ้น/เดือน</li>
+          <li>อัปเดต Resume และ LinkedIn ทุก 2 เดือน</li>
+        </ul>
+      </div>
+    </div>`;
+}
+
+// Certificate
+function renderCertificate() {
+  const el = document.getElementById('certContainer');
+  if (!el) return;
+  const user = JSON.parse(localStorage.getItem('futureReadyUser') || '{}');
+  const score = parseInt(localStorage.getItem('futureReadyScore') || '55');
+  const today = new Date().toLocaleDateString('th-TH', { year:'numeric', month:'long', day:'numeric' });
+  const level = score >= 80 ? 'Expert' : score >= 60 ? 'Proficient' : 'Foundation';
+  el.innerHTML = `
+    <div class="certificate-box">
+      <div class="cert-logo">🏆</div>
+      <div class="cert-title">DIGITECH FutureReady AI</div>
+      <div class="cert-sub">AI-Ready Digital Curriculum Platform</div>
+      <p style="color:#888;font-size:14px;margin:0;">ขอมอบประกาศนียบัตรนี้ให้แก่</p>
+      <div class="cert-name">${user.name || 'ผู้ใช้งาน'}</div>
+      <p style="color:#888;font-size:14px;margin:0 0 8px;">ได้ทำการประเมิน AI Readiness ด้วยคะแนน</p>
+      <div class="cert-score">${score}<span style="font-size:22px;">%</span></div>
+      <div class="cert-score-label">AI Readiness Score — Level: <b>${level}</b></div>
+      <div style="display:flex;justify-content:center;gap:12px;margin:20px 0;">
+        <span style="background:#e0f2fe;color:#0369a1;padding:6px 16px;border-radius:99px;font-size:13px;font-weight:700;">✓ AI Literacy</span>
+        <span style="background:#dcfce7;color:#15803d;padding:6px 16px;border-radius:99px;font-size:13px;font-weight:700;">✓ Prompt Engineering</span>
+        <span style="background:#fdf4ff;color:#7c3aed;padding:6px 16px;border-radius:99px;font-size:13px;font-weight:700;">✓ Data Skills</span>
+      </div>
+      <div class="cert-date">ออกให้ ณ วันที่ ${today}</div>
+      <button onclick="window.print()" class="btn" style="margin-top:20px;background:#271f66;color:#fff;border:none;">🖨️ พิมพ์ใบประกาศนียบัตร</button>
+    </div>`;
+}
+
+// Support submit
+function submitSupport() {
+  const subj = document.getElementById('supportSubject')?.value.trim();
+  const msg = document.getElementById('supportMsg')?.value.trim();
+  if (!subj || !msg) { alert('กรุณากรอกหัวข้อและรายละเอียด'); return; }
+  const list = document.getElementById('supportList');
+  const item = document.createElement('div');
+  item.className = 'support-msg';
+  item.innerHTML = `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span class="support-tag tag-open">รอตอบ</span><h4 style="margin:0;">${subj}</h4></div><p>${msg}</p>`;
+  list.prepend(item);
+  document.getElementById('supportSubject').value = '';
+  document.getElementById('supportMsg').value = '';
+  alert('ส่งคำถามสำเร็จ! ทีมงานจะตอบภายใน 24 ชั่วโมง ✅');
+}
+
+// Show/hide Pro menu based on plan
+function updateProMenu() {
+  const plan = localStorage.getItem('premiumPlan');
+  const proMenu = document.getElementById('proMenu');
+  if (proMenu) {
+    if (plan === 'Premium Pro 389') {
+      proMenu.classList.add('show');
+    } else {
+      proMenu.classList.remove('show');
+    }
+  }
+}
+
+// Override buyPremium to also update Pro menu
+const _origBuyPremium = window.buyPremium;
+window.buyPremium = function(plan) {
+  _origBuyPremium(plan);
+  updateProMenu();
+};
+
+// Override cancelPremium to also hide Pro menu
+const _origCancelPremium = window.cancelPremium;
+window.cancelPremium = function() {
+  _origCancelPremium();
+  updateProMenu();
+};
+
+// Add Pro pages to protected list & render on visit
+const proPages = ['resumeAnalyzer','mockInterview','careerRoadmap','proReport','certificate','prioritySupport'];
+const _origShowPage = window.showPage;
+window.showPage = function(id) {
+  // Pro-only guard
+  if (proPages.includes(id)) {
+    if (localStorage.getItem('premiumPlan') !== 'Premium Pro 389') {
+      // Show upgrade modal
+      const m = document.getElementById('proRequiredModal');
+      if (m) m.style.display = 'flex';
+      return;
+    }
+  }
+  _origShowPage(id);
+  // Render dynamic content
+  if (id === 'careerRoadmap') renderRoadmap();
+  if (id === 'proReport') renderProReport();
+  if (id === 'certificate') renderCertificate();
+  if (id === 'mockInterview') startInterview();
+};
+
+// Expose
+window.simulateResumeUpload = simulateResumeUpload;
+window.startInterview = startInterview;
+window.submitAnswer = submitAnswer;
+window.renderRoadmap = renderRoadmap;
+window.submitSupport = submitSupport;
+window.updateProMenu = updateProMenu;
+
+// Init
+updateProMenu();
+
+/* ==================== END PREMIUM PRO JS ==================== */
 </script>
 
+<!-- ===== PRO REQUIRED MODAL ===== -->
+<div id="proRequiredModal" style="
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
+  align-items:center; justify-content:center;">
+  <div style="
+    background:#fff; border-radius:24px; padding:40px 32px;
+    max-width:400px; width:92%; text-align:center;
+    box-shadow:0 24px 60px rgba(39,31,102,0.25); position:relative;">
+    <div style="font-size:56px; margin-bottom:12px;">👑</div>
+    <h2 style="margin:0 0 8px; color:#271f66; font-size:22px;">ฟีเจอร์เฉพาะ Premium Pro</h2>
+    <p style="color:#64748b; font-size:15px; line-height:1.7; margin:0 0 8px;">
+      ฟีเจอร์นี้สำหรับสมาชิก <b>Premium Pro</b> เท่านั้น<br>
+      อัปเกรดเพื่อปลดล็อก:
+    </p>
+    <div style="text-align:left;margin:12px 0 24px;background:#f8fafc;border-radius:14px;padding:16px;">
+      <p style="margin:4px 0;font-size:14px;color:#444;">📄 Resume Analyzer AI</p>
+      <p style="margin:4px 0;font-size:14px;color:#444;">🎤 Mock Interview AI</p>
+      <p style="margin:4px 0;font-size:14px;color:#444;">🗺️ Career Roadmap ส่วนตัว</p>
+      <p style="margin:4px 0;font-size:14px;color:#444;">📊 Premium Career Report</p>
+      <p style="margin:4px 0;font-size:14px;color:#444;">🏆 AI Readiness Certificate</p>
+      <p style="margin:4px 0;font-size:14px;color:#444;">💬 Priority Support 24 ชั่วโมง</p>
+    </div>
+    <div style="display:flex; gap:12px; justify-content:center;">
+      <button onclick="document.getElementById('proRequiredModal').style.display='none'" style="
+        padding:12px 22px; border-radius:10px; border:2px solid #e2e8f0;
+        background:#fff; color:#64748b; font-size:15px; font-weight:600;
+        cursor:pointer;">ปิด</button>
+      <button onclick="document.getElementById('proRequiredModal').style.display='none'; window.showPage('premium')" style="
+        padding:12px 28px; border-radius:10px; border:none;
+        background:linear-gradient(135deg,#7c3aed,#1dbea0);
+        color:#fff; font-size:15px; font-weight:700; cursor:pointer;">
+        👑 อัปเกรด Premium Pro
+      </button>
+    </div>
+  </div>
+</div>
+<!-- ===== END PRO MODAL ===== -->
+
+<!-- ===== LOGIN REQUIRED MODAL ===== -->
+<div id="loginRequiredModal" style="
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.55); backdrop-filter:blur(4px);
+  align-items:center; justify-content:center;">
+  <div style="
+    background:#fff; border-radius:20px; padding:36px 32px;
+    max-width:380px; width:90%; text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.25); position:relative;">
+    <div style="font-size:48px; margin-bottom:12px;">🔐</div>
+    <h2 style="margin:0 0 10px; color:#1e293b; font-size:22px;">ต้องเข้าสู่ระบบก่อน</h2>
+    <p style="color:#64748b; font-size:15px; line-height:1.6; margin:0 0 24px;">
+      กรุณาสมัครสมาชิกหรือเข้าสู่ระบบ<br>เพื่อใช้งานฟีเจอร์นี้
+    </p>
+    <div style="display:flex; gap:12px; justify-content:center;">
+      <button onclick="closeLoginModal()" style="
+        padding:12px 24px; border-radius:10px; border:2px solid #e2e8f0;
+        background:#fff; color:#64748b; font-size:15px; font-weight:600;
+        cursor:pointer;">ปิด</button>
+      <button onclick="closeLoginModal(); openAuthModal('login')" style="
+        padding:12px 28px; border-radius:10px; border:none;
+        background:linear-gradient(135deg,#1dbea0,#0f766e);
+        color:#fff; font-size:15px; font-weight:700; cursor:pointer;">
+        เข้าสู่ระบบ / สมัครสมาชิก
+      </button>
+    </div>
+  </div>
+</div>
+<!-- ===== END LOGIN MODAL ===== -->
 </body>
 </html>
+
+<!-- ================================================================
+     ANIMATION JS — DIGITECH FutureReady AI
+     ================================================================ -->
+<script>
+(function() {
+  /* --- Page Loader --- */
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var loader = document.getElementById('pageLoader');
+      if (loader) loader.classList.add('done');
+    }, 600);
+  });
+
+  /* --- Header scroll effect --- */
+  var header = document.querySelector('header');
+  window.addEventListener('scroll', function() {
+    if (header) {
+      if (window.scrollY > 10) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    }
+    var btn = document.getElementById('scrollTopBtn');
+    if (btn) {
+      if (window.scrollY > 300) btn.classList.add('show');
+      else btn.classList.remove('show');
+    }
+  }, { passive: true });
+
+  /* --- Scroll-to-top button --- */
+  var scrollBtn = document.getElementById('scrollTopBtn');
+  if (scrollBtn) scrollBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* --- Scroll-reveal cards using IntersectionObserver --- */
+  function applyReveal() {
+    var targets = document.querySelectorAll('.card:not(.reveal), .white-card:not(.reveal), .feature-card:not(.reveal), .pricing-card:not(.reveal), .roadmap-item:not(.reveal), .pro-section-header:not(.reveal)');
+    targets.forEach(function(el) { el.classList.add('reveal'); });
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { observer.observe(el); });
+  }
+  applyReveal();
+
+  /* --- Re-apply reveal when section changes (SPA navigation) --- */
+  var _origShowPageAnim = window.showPage;
+  window.showPage = function(id) {
+    if (_origShowPageAnim) _origShowPageAnim(id);
+    setTimeout(function() {
+      applyReveal();
+      if (id === 'dashboard' || id === 'home') {
+        document.querySelectorAll('.bar').forEach(function(bar) {
+          var w = bar.style.width;
+          bar.style.width = '0';
+          setTimeout(function() { bar.style.width = w; }, 50);
+        });
+        document.querySelectorAll('.score').forEach(function(el) {
+          animateCounter(el, el.textContent);
+        });
+      }
+      var sec = document.querySelector('section.active');
+      if (sec) {
+        sec.style.animation = 'none';
+        sec.offsetHeight;
+        sec.style.animation = 'fadeInUp 0.4s ease both';
+      }
+    }, 30);
+  };
+
+  /* --- Card 3D tilt on mouse move --- */
+  document.addEventListener('mousemove', function(e) {
+    document.querySelectorAll('.feature-card, .pricing-card').forEach(function(card) {
+      var rect = card.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+      var dx = (e.clientX - cx) / rect.width;
+      var dy = (e.clientY - cy) / rect.height;
+      if (Math.sqrt(dx*dx + dy*dy) < 0.65) {
+        card.style.transform = 'perspective(700px) rotateY(' + (dx*5) + 'deg) rotateX(' + (-dy*4) + 'deg) translateY(-5px)';
+        card.style.boxShadow = '0 20px 48px rgba(39,31,102,0.2)';
+      } else {
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      }
+    });
+  });
+
+  /* --- Particle canvas inside hero banner --- */
+  var heroBanner = document.querySelector('.hero-banner');
+  if (heroBanner) {
+    var canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+    heroBanner.appendChild(canvas);
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeC() { canvas.width = heroBanner.offsetWidth; canvas.height = heroBanner.offsetHeight; }
+    resizeC();
+    window.addEventListener('resize', resizeC, { passive: true });
+    function mkP() {
+      return { x: Math.random()*canvas.width, y: canvas.height+10,
+               r: Math.random()*2+0.7, spd: Math.random()*0.6+0.25,
+               op: Math.random()*0.45+0.15, dx: (Math.random()-0.5)*0.5 };
+    }
+    for (var i=0; i<40; i++) { var p=mkP(); p.y=Math.random()*canvas.height; particles.push(p); }
+    (function animP() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(function(p,idx) {
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(29,190,160,'+p.op+')'; ctx.fill();
+        p.y-=p.spd; p.x+=p.dx;
+        if(p.y<-10) particles[idx]=mkP();
+      });
+      requestAnimationFrame(animP);
+    })();
+  }
+
+  /* --- Score counter animation --- */
+  function animateCounter(el, val) {
+    var target = parseInt(val, 10);
+    if (isNaN(target)) return;
+    var start = 0, dur = 900, t0 = null;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var prog = Math.min((ts-t0)/dur, 1);
+      var ease = 1 - Math.pow(1-prog, 3);
+      el.textContent = Math.round(ease*target) + '%';
+      if (prog < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var scoreObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target, entry.target.textContent);
+        scoreObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.score').forEach(function(el) { scoreObs.observe(el); });
+
+  /* --- Staggered grid card entrance delays --- */
+  ['#courseList','#tutorList','#jobList','#moduleList'].forEach(function(sel) {
+    var cards = document.querySelectorAll(sel + ' .white-card, ' + sel + ' .card');
+    cards.forEach(function(c,i) { c.style.transitionDelay = (i*0.07)+'s'; });
+  });
+
+})();
+
+/* ================================================================
+   AUTH MODAL FUNCTIONS
+   ================================================================ */
+function openAuthModal(tab) {
+  var modal = document.getElementById('authModal');
+  if (!modal) return;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (tab) switchAuthTab(tab);
+  // Reset animation
+  var box = modal.querySelector('.auth-modal-box');
+  if (box) { box.style.animation = 'none'; box.offsetHeight; box.style.animation = 'authModalIn 0.35s cubic-bezier(.25,.8,.25,1) both'; }
+}
+
+function closeAuthModal() {
+  var modal = document.getElementById('authModal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function switchAuthTab(tab) {
+  var tabLogin = document.getElementById('tabLogin');
+  var tabRegister = document.getElementById('tabRegister');
+  var panelLogin = document.getElementById('panelLogin');
+  var panelRegister = document.getElementById('panelRegister');
+  if (tab === 'login') {
+    tabLogin.classList.add('active'); tabRegister.classList.remove('active');
+    panelLogin.classList.add('active'); panelRegister.classList.remove('active');
+  } else {
+    tabRegister.classList.add('active'); tabLogin.classList.remove('active');
+    panelRegister.classList.add('active'); panelLogin.classList.remove('active');
+  }
+}
+
+function showToast(msg) {
+  var toast = document.getElementById('authToast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(function() { toast.classList.remove('show'); }, 3000);
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeAuthModal();
+});
+
+// Expose globally
+window.openAuthModal = openAuthModal;
+window.closeAuthModal = closeAuthModal;
+window.switchAuthTab = switchAuthTab;
+window.showToast = showToast;
+/* ================================================================
+   END AUTH MODAL FUNCTIONS
+   ================================================================ */
+</script>
+<!-- ================================================================
+     END ANIMATION JS
+     ================================================================ -->
